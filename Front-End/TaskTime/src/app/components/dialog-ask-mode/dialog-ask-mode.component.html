@@ -1,0 +1,30 @@
+<div class="container d-flex flex-column justify-content-center iransans rtl">
+
+    <p class="welcome d-flex w-100 just justify-content-center">علی جان ، خوش اومدی</p>
+
+    <p class="ask-mode d-flex justify-content-center">امروز در چه حالی ؟</p>
+
+    <div class="d-flex flex-row justify-content-center">
+        <mat-button-toggle-group name="fontStyle">
+            <mat-button-toggle (click)="onEmotionSelect(0)" class="cry"><i class="fal fa-face-sad-sweat"></i></mat-button-toggle>
+            <mat-button-toggle (click)="onEmotionSelect(1)" class="sad"><i class="fal fa-face-frown-slight"></i></mat-button-toggle>
+            <mat-button-toggle (click)="onEmotionSelect(2)" class="poker"><i class="fal fa-face-meh"></i></mat-button-toggle>
+            <mat-button-toggle (click)="onEmotionSelect(3)" class="smile"><i class="fal fa-face-smile"></i></mat-button-toggle>
+            <mat-button-toggle (click)="onEmotionSelect(4)" class="laugh"><i class="fal fa-face-laugh"></i></mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+            placeholder="هرچه میخواهد دل تنگت بگو ..." [(ngModel)]="description"></textarea>
+    </div>
+    <div class="ask-start-work d-flex flex-row align-items-center justify-content-between">
+        <span>میخوای شروع به کار کنی ؟</span>
+        <div class="d-flex flex-row btns">
+            <button (click)="onSubmit(employeeId,emotion,description)" class="border iransans yes" mat-raised-button>
+                <a href="/current-day"> آره</a>
+            </button>
+            <button class="border iransans" mat-raised-button>نه هنوز</button>
+        </div>
+    </div>
+
+</div>

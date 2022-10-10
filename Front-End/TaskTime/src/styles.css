@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'IRANSans';
+    src: url(assets/fonts/IRANSansWebKE.ttf) format('trueType');
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: "IRANSans", "Helvetica Neue", sans-serif; }
+
+*{
+    direction: rtl;
+}
+.iransans{
+    font-family: "IRANSans";
+}
+.custom-container .mat-dialog-container {
+    border-radius: 15px !important;
+ }
+ .rtl{
+    direction: rtl;
+ }
+ .ltr{
+    direction: ltr;
+ }

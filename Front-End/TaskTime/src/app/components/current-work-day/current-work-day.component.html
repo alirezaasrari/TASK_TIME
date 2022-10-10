@@ -1,0 +1,50 @@
+<div class="d-flex flex-column">
+
+    <div class="d-flex flex-row justify-content-center">
+
+        <!-- <div class="progress ltr my-4">
+
+            <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0"
+                aria-valuemax="100"></div>
+
+            <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30"
+                aria-valuemin="0" aria-valuemax="100"></div>
+
+            <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0"
+                aria-valuemax="100"></div>
+
+        </div> -->
+        
+
+    </div>
+    <!-- ========================= -->
+    <div class="user-name d-flex flex-row justify-content-end iransans p-4">سارا صنعت دوست</div>
+
+
+    <div class="container-timer">
+        <div class="d-flex flex-row justify-content-center align-items-center iransans">
+            <span class="work-time ms-3">02:25</span>
+            <button (click)="startTimer(60)" class="work iransans ms-3" mat-stroked-button>در حال کار</button>
+            <button (click)="rest = true" class="rest iransans ms-3" mat-stroked-button>استراحت</button>
+            <span class="rest-time ms-3">00:18</span>
+        </div>
+
+        <div class="time-bar-container d-flex flex-column justify-content-end ltr align-items-center iransans mt-5">
+            <div class="timebar d-flex flex-row ">
+                <span class="col d-flex flex-row justify-content-start">24:00</span>
+                <span class="col d-flex flex-row justify-content-end">00:00</span>
+            </div>
+            <div class="d-flex flex-row align-items-end ltr bar">
+                <div class="point-fill"></div>
+                <mat-progress-bar class="progress mt-5 d-flex" mode="determinate" [value]="progressbarValue" dir="ltr">
+
+                </mat-progress-bar>
+                <div class="point-empty"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="rtl d-flex flex-row justify-content-center">
+        <button (click)="onOpenDialog()" class=" iransans leave" mat-raised-button>دارم میرم</button>
+    </footer>
+</div>

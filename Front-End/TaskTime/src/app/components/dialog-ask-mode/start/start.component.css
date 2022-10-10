@@ -1,0 +1,28 @@
+.startBtn{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: #fec633;
+    cursor: pointer;
+}
+.day{
+    margin-bottom: 3rem;
+    font-weight: 500px;
+    font-size: 20px;
+}
+
+.time{
+    font-size: 4.5rem;
+    margin-bottom: 3rem;
+}
+.date{
+    margin-bottom: 2rem;
+    font-weight: 500px;
+    font-size: 20px;
+}
+.custom-select{
+    height: 50px;
+    width: 250px;
+    font-size: 20px;
+    border-radius: 7px;
+}

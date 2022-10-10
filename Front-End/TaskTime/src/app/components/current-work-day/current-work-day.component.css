@@ -1,0 +1,114 @@
+.user-name {
+    color: #4895d6;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.work-time {
+    color: #61cf4f;
+    font-size: 16px;
+}
+
+.rest-time {
+    color: #fc8f8f;
+    font-size: 16px;
+}
+
+.work,
+.rest {
+    border-radius: 50px;
+    /* padding: 5px; */
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+}
+
+.work:hover {
+    background-color: #ecf8ea;
+}
+
+.rest:hover {
+    background-color: #ffe3e3;
+}
+
+.work:focus {
+    box-shadow: 0 0 12px #61cf4f;
+    border: 1px solid #61cf4f;
+    background-color: #ecf8ea;
+}
+
+.rest:focus {
+    box-shadow: 0 0 12px #fc8f8f;
+    border: 1px solid #fc8f8f;
+    background-color: #ffe3e3;
+}
+
+.progress {
+    width: 850px;
+    height: 5px;
+    /* position: relative; */
+}
+
+::ng-deep.mat-progress-bar-fill::after {
+    background-color: #9f9f9f;
+
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #eaeaea;
+}
+
+.point-fill {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #9f9f9f;
+    align-items: end;
+}
+.point-empty{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color:white;
+    border: 1px solid #9f9f9f;
+    align-items: start;
+}
+.mat-progress-bar{
+    bottom: 5px;
+}
+.timebar{
+    width: 887px;
+
+}
+.bar{
+    height: 25px;
+}
+.time-bar-container{
+    font-size: 12px;
+    
+}
+.container-timer{
+    height: 500px;
+}
+.leave{
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 7px;
+     border:1px solid #cacaca ;
+    /* color: #909090;  */
+
+}
+.custom-select{
+    height: 50px;
+    width: 250px;
+    font-size: 20px;
+    border-radius: 7px;
+}
+
+.warn{
+    background-color: orange;
+}
+.dan{
+    background-color: red;
+}

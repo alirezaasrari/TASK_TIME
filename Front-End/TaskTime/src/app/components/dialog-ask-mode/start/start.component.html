@@ -1,0 +1,26 @@
+<div class="h-100 d-flex align-items-center justify-content-center flex-column iransans">
+    <div class="day ">پنج شنبه</div>
+    <div class="time bold">10:25</div>
+    <div class="date h6">29 اردیبهشت ماه 1401</div>
+    <div class=" d-flex input">
+        <select (change)="selectIdHandler($event)" class="custom-select border selected">
+            <option [value]="employee.id" *ngFor="let employee of employeeList$ | async">{{employee.name}}</option>
+        </select>
+    </div>
+    <div class="startBtn mt-3" (click)="onOpenDialog()">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <style type="text/css">
+                .st0 {
+                    fill: #fec633;
+                }
+
+                .st1 {
+                    fill: #FFFFFF;
+                }
+            </style>
+            <circle class="st0" cx="256" cy="256" r="256" />
+            <polygon class="st1" points="346.37,256 197.74,151.07 197.74,360.93 " />
+        </svg>
+    </div>
+</div>

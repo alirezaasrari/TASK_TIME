@@ -1,0 +1,40 @@
+.container{
+    width: 450px;
+    height: 380px;
+    margin: 20px;
+}
+.title{
+    font-size: 18px;
+    font-weight: 550;
+}
+.content{
+    font-size: 24px;
+    font-weight: 550;
+}
+/* .mat-button-toggle-group{
+    border: none !important;
+}
+.mat-button-toggle{
+    font-size: 28px;
+    border: none !important;
+} */
+.mat-icon{
+    height: 60px;
+    width: 30px;
+    color: #fec507;
+}
+.form-group{
+    margin-top: 25px;
+}
+::placeholder{
+    font-size: 12px !important;
+}
+.go {
+    border: 1px solid #60a9e7;
+    color: #60a9e7;
+    width: 100px;
+    height: 45px;
+    border-radius: 7px;
+    background-color: #f3f9fd;
+    font-size: 18px;
+}
