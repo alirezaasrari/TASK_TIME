@@ -30,7 +30,7 @@ export class DialogAskModeComponent implements OnInit {
       employeeId: this.employeeId,
       emotion: emotion,
       description: description
-    }).subscribe();
+    }).subscribe(m => console.log(m));
   }
   ngOnInit(): void {
     this.employeeId = this.data.id;
