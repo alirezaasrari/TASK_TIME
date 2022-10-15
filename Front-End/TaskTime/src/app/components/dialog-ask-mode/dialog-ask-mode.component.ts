@@ -17,13 +17,12 @@ export class DialogAskModeComponent implements OnInit {
     private service: TaskTimeService,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
-
+  employeeName$:Observable<string>[] = [];
   emotionList: any[] = ['خیلی بد', 'بد', 'متوسط', 'خوب', 'عالی'];
   emotion: string = '';
   employeeId: number;
   description = '';
   errorMsg: string;
-  employeeName$:Observable<string>[] = [];
   secondPageObject: IsecondPageObject = {
     employeeId: 0,
     emotion: '',
@@ -54,7 +53,7 @@ export class DialogAskModeComponent implements OnInit {
   ngOnInit(): void {
     this.employeeId = this.data.id;
     this.service.getEmployeeById(this.employeeId).subscribe(x =>{
-      this.employeeName$.push(of(x.name)) 
+      this.employeeName$.push(of(x.name.split(" ")[0])) 
      })
   }
 }
