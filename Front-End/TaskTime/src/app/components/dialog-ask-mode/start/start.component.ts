@@ -15,7 +15,8 @@ export class StartComponent implements OnInit {
   length: number;
   employee: any;
   employeeId: number;
-  selectedId: number = 0;
+  selectedId: number = 1;
+  defaultValue:string = "لطفا نام خود را انتخاب کنید";
   constructor(public dialog: MatDialog, private service: TaskTimeService) {}
   selectIdHandler(event: any){
    this.selectedId = event.target.value;
