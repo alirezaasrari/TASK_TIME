@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 // import * as moment from 'jalali-moment';
-import { interval, takeUntil, timer } from 'rxjs';
+import { interval, Observable, of, takeUntil, timer } from 'rxjs';
 import { TaskTimeService } from 'src/app/services/taskTime';
 import { DialogLeavingWorkComponent } from './dialog-leaving-work/dialog-leaving-work.component';
 
@@ -22,6 +22,7 @@ export class CurrentWorkDayComponent implements OnInit {
   H =this.d.getHours(); 
   M =this.d.getMinutes(); 
   time = this.H + ":" + this.M;
+  employeeName$:Observable<string>[] = [];
 
 
   startTimer(seconds: number) {
@@ -44,6 +45,10 @@ export class CurrentWorkDayComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+    this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
+    this.service.getEmployeeById(this.selectedId).subscribe(x =>{
+       this.employeeName$.push(of(x.name)) 
+      })
   }
 
   public onOpenDialog() {

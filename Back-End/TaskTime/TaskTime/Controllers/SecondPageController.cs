@@ -32,7 +32,9 @@ namespace TaskTime.Controllers
         [HttpPost("post-employee-secondpagedata")]
         public IActionResult PostEmployeeSecondPageData([FromBody] SecondPageVM secondpage) 
         {
-            try
+                _secondPageService.PostSecondPageData(secondpage); 
+                return Ok();
+            /*try
             {
                 _secondPageService.PostSecondPageData(secondpage);
                 return Ok();
@@ -40,8 +42,8 @@ namespace TaskTime.Controllers
             catch (Exception e)
             {
 
-                return BadRequest(e.Message);
-            }
+                throw new Exception(e.Message);
+            }*/
         }
 
         [HttpPut("update-employeesecondpagedata-by-id/{id}")]

@@ -3,3 +3,8 @@ export interface IsecondPageObject {
     emotion: string,
     description: string
 }
+
+export interface IlastPage{
+    id: number,
+    name: string
+}

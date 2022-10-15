@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { IlastPage } from '../interfaces/elements';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,10 @@ postsecondpage(data:any){
 postlastpage(data:any){
   return this.http.post(this.taskTimeUrl + '/LastPage/add-lastpage-data' , data)  
 }
+
+// third page services
+
+getEmployeeById(id:number):Observable<IlastPage> {
+  return this.http.get<IlastPage>(this.taskTimeUrl + `/Employee/get-employee-by-id/${id}`);
+  }
 }

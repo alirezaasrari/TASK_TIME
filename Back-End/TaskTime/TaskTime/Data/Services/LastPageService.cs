@@ -13,10 +13,10 @@ namespace TaskTime.Data.Services
         public void PostLastPageData(LastPageVM lastpagedata)
         {
             LastPage _lastpagedata = new LastPage()
-            {
-                EmployeeId = lastpagedata.EmployeeId,
-                Description = lastpagedata.Description,
+            {                
                 Stars = lastpagedata.Stars,
+                Description = lastpagedata.Description,
+                EmployeeId = lastpagedata.EmployeeId,
             };
             _context.LastPages.Add(_lastpagedata);
             _context.SaveChanges();
