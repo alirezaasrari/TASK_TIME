@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 // import * as moment from 'jalali-moment';
 import { interval, takeUntil, timer } from 'rxjs';
+import { TaskTimeService } from 'src/app/services/taskTime';
 import { DialogLeavingWorkComponent } from './dialog-leaving-work/dialog-leaving-work.component';
 
 @Component({
@@ -13,6 +15,7 @@ export class CurrentWorkDayComponent implements OnInit {
 
   progressbarValue = 0;
   selectedId:number;
+  id:number;
   curSec: number = 0;
   rest: boolean = false;
   d = new Date(); 
@@ -36,12 +39,15 @@ export class CurrentWorkDayComponent implements OnInit {
   }
   
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,  private service: TaskTimeService,
+    private route: ActivatedRoute,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
   }
 
   public onOpenDialog() {
+    this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
     this.dialog.open(DialogLeavingWorkComponent, {
       panelClass: 'custom-container',
       data : {

@@ -9,8 +9,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./dialog-leaving-work.component.css']
 })
 export class DialogLeavingWorkComponent implements OnInit {
-    constructor(private fb: FormBuilder,
-      private service: TaskTimeService,
+  router: any;
+    constructor(private fb: FormBuilder, private service: TaskTimeService,
       @Inject(MAT_DIALOG_DATA) public data: any){}
   public form: FormGroup;
   rating: number = 0;
@@ -20,9 +20,9 @@ export class DialogLeavingWorkComponent implements OnInit {
   onLeaving(employeeId:number, description: string, rating: number) {
     this.service.postlastpage({
       stars: rating,
-      description: this.description,
+      description: description,
       employeeId: this.employeeId
-    }).subscribe()
+    }).subscribe();
   }
   ngOnInit(): void {
     this.employeeId = this.data.id;

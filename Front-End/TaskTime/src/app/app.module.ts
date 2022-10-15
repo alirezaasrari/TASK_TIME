@@ -17,6 +17,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     NgxStarRatingModule,
     ReactiveFormsModule 
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
+  ],
   bootstrap: [AppComponent],
   entryComponents : [DialogAskModeComponent]
 })
