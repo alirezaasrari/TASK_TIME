@@ -15,10 +15,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-
-// import {JdatePipe} from 'ngx-persian';
-// import { PersianPipesModule } from 'ngx-persian-pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -28,10 +26,9 @@ import { FormsModule } from '@angular/forms';
     CurrentWorkDayComponent,
     DialogLeavingWorkComponent,
     AdminPanelComponent,
-    // PersianPipesModule
-    // JdatePipe
   ],
   imports: [
+    MatSnackBarModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -43,8 +40,7 @@ import { FormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatIconModule,
     NgxStarRatingModule,
-    // NzSwitchModule
-  
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent],

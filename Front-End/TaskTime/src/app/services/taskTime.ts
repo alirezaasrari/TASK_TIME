@@ -18,7 +18,13 @@ return this.http.get<any>(this.taskTimeUrl + '/Employee/get-all-employee');
 // second page services
 
 postsecondpage(data:any){
-  return this.http.post(this.taskTimeUrl + '/SecondPage/post-employee-secondpagedata', data);
+  return this.http.post(this.taskTimeUrl + '/SecondPage/post-employee-secondpagedata', data)
 }
-
+//.catch(this.errorHandler);
+// errorHandler(error: HttpErrorResponse){
+//   return Observable.throw(error.message || "server Error");
+// }
+postlastpage(data:any){
+  return this.http.post(this.taskTimeUrl + '/LastPage/add-lastpage-data' , data)  
+}
 }

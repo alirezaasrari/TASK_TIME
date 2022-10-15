@@ -12,6 +12,7 @@ import { DialogLeavingWorkComponent } from './dialog-leaving-work/dialog-leaving
 export class CurrentWorkDayComponent implements OnInit {
 
   progressbarValue = 0;
+  selectedId:number;
   curSec: number = 0;
   rest: boolean = false;
   d = new Date(); 
@@ -41,8 +42,12 @@ export class CurrentWorkDayComponent implements OnInit {
   }
 
   public onOpenDialog() {
-    this.dialog.open(DialogLeavingWorkComponent,
-      { panelClass: 'custom-container' });
+    this.dialog.open(DialogLeavingWorkComponent, {
+      panelClass: 'custom-container',
+      data : {
+        id:this.selectedId
+      }
+    });
   }
 
 

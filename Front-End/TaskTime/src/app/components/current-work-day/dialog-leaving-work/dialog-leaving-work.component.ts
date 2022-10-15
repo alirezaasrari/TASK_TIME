@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TaskTimeService } from 'src/app/services/taskTime';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog-leaving-work',
@@ -6,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-leaving-work.component.css']
 })
 export class DialogLeavingWorkComponent implements OnInit {
-  constructor() { }
-  description = "";
-  ngOnInit(): void {
+    constructor(private fb: FormBuilder,
+      private service: TaskTimeService,
+      @Inject(MAT_DIALOG_DATA) public data: any){}
+  public form: FormGroup;
+  rating: number = 0;
+  description: string = "";
+  employeeId: number;
+  id:number;
+  onLeaving(employeeId:number, description: string, rating: number) {
+    this.service.postlastpage({
+      stars: rating,
+      description: this.description,
+      employeeId: this.employeeId
+    }).subscribe()
   }
-  
-
+  ngOnInit(): void {
+    this.employeeId = this.data.id;
+  }
 }

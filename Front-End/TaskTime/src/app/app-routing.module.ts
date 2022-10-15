@@ -8,7 +8,7 @@ import { StartComponent } from './components/dialog-ask-mode/start/start.compone
 
 const routes: Routes = [
   { path: '', component: StartComponent },
-  { path: 'current-day', component: CurrentWorkDayComponent },
+  { path: 'current-day/:id', component: CurrentWorkDayComponent },
   { path: 'admin-panel', component: AdminPanelComponent }
 ];
 
