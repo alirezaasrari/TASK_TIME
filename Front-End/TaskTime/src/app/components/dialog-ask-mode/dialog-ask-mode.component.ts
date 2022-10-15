@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IsecondPageObject } from 'src/app/interfaces/elements';
 import { TaskTimeService } from 'src/app/services/taskTime';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-dialog-ask-mode',
@@ -14,7 +15,7 @@ export class DialogAskModeComponent implements OnInit {
   constructor(
     private snackbar: MatSnackBar,
     private service: TaskTimeService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   emotionList: any[] = ['خیلی بد', 'بد', 'متوسط', 'خوب', 'عالی'];
@@ -22,6 +23,7 @@ export class DialogAskModeComponent implements OnInit {
   employeeId: number;
   description = '';
   errorMsg: string;
+  employeeName$:Observable<string>[] = [];
   secondPageObject: IsecondPageObject = {
     employeeId: 0,
     emotion: '',
@@ -41,7 +43,6 @@ export class DialogAskModeComponent implements OnInit {
   }
 
 
-
   openSnackBar(message: string) {
     this.snackbar.open(message, 'undo', {
       duration: 4000,
@@ -52,6 +53,9 @@ export class DialogAskModeComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeId = this.data.id;
+    this.service.getEmployeeById(this.employeeId).subscribe(x =>{
+      this.employeeName$.push(of(x.name)) 
+     })
   }
 }
 

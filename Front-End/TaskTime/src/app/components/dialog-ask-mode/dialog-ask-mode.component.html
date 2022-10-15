@@ -1,6 +1,6 @@
 <div class="container d-flex flex-column justify-content-center iransans rtl">
 
-    <p class="welcome d-flex w-100 just justify-content-center">علی جان ، خوش اومدی</p>
+    <p class="welcome d-flex w-100 just justify-content-center"> {{employeeName$[0]|async}} جان</p>
 
     <p class="ask-mode d-flex justify-content-center">امروز در چه حالی ؟</p>
 
@@ -23,7 +23,7 @@
             <button mat-dialog-close (click)="onSubmit(employeeId,emotion,description)" class="border iransans yes" mat-raised-button>
                 <a [routerLink]="['/current-day', employeeId]"> آره</a>
             </button>
-            <button class="border iransans" mat-raised-button>نه هنوز</button>
+            <button mat-dialog-close class="border iransans" mat-raised-button>نه هنوز</button>
         </div>
     </div>
 
