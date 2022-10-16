@@ -20,8 +20,10 @@
     <div class="ask-start-work d-flex flex-row align-items-center justify-content-between">
         <span>میخوای شروع به کار کنی ؟</span>
         <div class="d-flex flex-row btns">
-            <button mat-dialog-close (click)="onSubmit(employeeId,emotion,description)" class="border iransans yes" mat-raised-button>
-                <a [routerLink]="['/current-day', employeeId]"> آره</a>
+            <button mat-dialog-close 
+            [routerLink]="['/current-day', employeeId]"
+            (click)="onSubmit(employeeId,emotion,description)" class="border iransans yes" mat-raised-button>
+                 آره
             </button>
             <button mat-dialog-close class="border iransans" mat-raised-button>نه هنوز</button>
         </div>
