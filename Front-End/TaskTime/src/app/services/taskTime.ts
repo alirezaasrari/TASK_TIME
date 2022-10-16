@@ -40,4 +40,8 @@ getEmployeeById(id:number):Observable<IlastPage> {
 getpersiandate():Observable<any> {
   return this.http.get<any>('http://worldclockapi.com/api/json/est/now');
 }
+
+getpersiandate2():Observable<any> {
+  return this.http.get<any>('https://api.keybit.ir/time/');
+}
 }
