@@ -34,4 +34,10 @@ postlastpage(data:any){
 getEmployeeById(id:number):Observable<IlastPage> {
   return this.http.get<IlastPage>(this.taskTimeUrl + `/Employee/get-employee-by-id/${id}`);
   }
+
+// persian calendar api
+
+getpersiandate():Observable<any> {
+  return this.http.get<any>('http://worldclockapi.com/api/json/est/now');
+}
 }

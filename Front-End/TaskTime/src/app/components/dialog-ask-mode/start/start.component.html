@@ -1,7 +1,7 @@
 <div class="h-100 d-flex align-items-center justify-content-center flex-column iransans">
-    <div class="day ">پنج شنبه</div>
-    <div class="time bold">10:25</div>
-    <div class="date h6">29 اردیبهشت ماه 1401</div>
+    <div class="day ">{{dayofweek}}</div>
+    <div class="time bold">{{now}}</div>
+    <div class="date h6">{{todaydate}}</div>
     <div class=" d-flex input">
         <select (change)="selectIdHandler($event)" class="custom-select border selected">
             <option [value]="employee.id" *ngFor="let employee of employeeList$ | async">{{employee.name}}</option>
