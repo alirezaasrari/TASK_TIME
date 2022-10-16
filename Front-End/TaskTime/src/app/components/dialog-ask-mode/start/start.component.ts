@@ -22,6 +22,9 @@ export class StartComponent implements OnInit {
   defaultValue:string = "لطفا نام خود را انتخاب کنید";
   now: any;
   nowone : any;
+  day:string;
+  month:string;
+  year:string;
   constructor(public dialog: MatDialog, private service: TaskTimeService) {
     // setInterval(() => {
     //   this.now = new Date().toLocaleTimeString().split(" ")[0];
@@ -37,7 +40,10 @@ export class StartComponent implements OnInit {
       this.service.getpersiandate2().subscribe((x:any) => {
         this.dayofweek = x.date.weekday.name,
         this.now = x.time12.full.short.fa,
-        this.todaydate = x.date.full.unofficial.usual.fa
+        this.todaydate = x.date.full.unofficial.usual.fa,
+        this.day = x.date.year.number.fa ,
+        this.month = x.date.month.name,
+        this.year = x.date.day.number.fa
       });
     },1000) 
     // this.service.getpersiandate().subscribe(x => {
