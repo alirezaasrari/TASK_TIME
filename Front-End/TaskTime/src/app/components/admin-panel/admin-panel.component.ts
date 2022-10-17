@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { IEmployee, IEmployeeُSecondPage } from 'src/app/interfaces/elements';
+import { IEmployee, IEmployeeُSecondPage, ILastPage, IlastPage } from 'src/app/interfaces/elements';
 import { TaskTimeService } from 'src/app/services/taskTime';
 
 @Component({
@@ -20,6 +20,8 @@ export class AdminPanelComponent implements OnInit {
   lastPageEmployeeList$: Observable<any[]>;
   searchCase:number = 0;
   searchCase2:number = 0;
+  searchCase3:number = 0;
+  searchCase4:number = 0;
 
   openSnackBar(message: string) {
     this.snackbar.open(message, 'undo', {
@@ -63,6 +65,28 @@ export class AdminPanelComponent implements OnInit {
     return secondpage;
   }
 
+  search3(id: number) {
+    var employee = this.service.getEmployeeById(id).subscribe((res: any) =>
+      {
+       this.Employee.name = res.name
+       });
+    return employee;
+  }
+
+  LastPage: ILastPage = {
+    stars: 0,
+    date: '',
+    description: ''
+  }
+  search4(id: number) {
+    var lastpage = this.service.getLastPageById(id).subscribe((res: any) =>
+      {
+       this.LastPage.date = res.date,
+       this.LastPage.stars = res.stars,
+       this.LastPage.description = res.description
+       });
+    return lastpage;
+  }
   ngOnInit(): void {
     this.employeeList$ = this.service.getAllEmployee();
     this.secondPageEmployeeList$ = this.service.getAllSecondPages()

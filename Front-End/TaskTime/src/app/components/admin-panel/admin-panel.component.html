@@ -93,4 +93,68 @@
             </tr>
           </tbody>
         </table>
+
+
+        <h2 class="text-center"> لیست اطلاعات صفحه اخر کارمندان </h2>
+        <div class="text-center bold">
+        <p>ای دی کارمند را سرچ و نام او را مشاهده کنید</p>
+  <form>
+    <input type="number" style="width: 400px; height: 32px; margin: 10px;" name="id" [(ngModel)]="searchCase3"
+     placeholder="ای دی را وارد و اطلاعات را دریافت کنید">
+     <button mat-raised-button color="primary" (click)="search3(searchCase3)">جستجو</button>
+  </form>
+  <table class="table table-striped">
+    <thead>
+      <th>نام خانوادگی</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-center bold">{{Employee.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="text-center bold">
+    <p>اطلاعات صفحه اخر هر کارمند بر حسب ای دی</p>
+<form>
+<input type="number" style="width: 400px; height: 32px; margin: 10px;" name="id" [(ngModel)]="searchCase4"
+ placeholder="ای دی را وارد و اطلاعات را دریافت کنید">
+ <button mat-raised-button color="primary" (click)="search4(searchCase4)">جستجو</button>
+</form>
+<table class="table table-striped">
+<thead>
+  <th>ستاره</th>
+  <th>هرچه میخواهد دل تنگت بگو</th>
+  <th>تاریخ</th>
+</thead>
+<tbody>
+  <tr>
+    <td class="text-center bold">{{LastPage.stars}}</td>
+    <td class="text-center bold">{{LastPage.description}}</td>
+    <td class="text-center bold">{{LastPage.date}}</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+  <br>
+        <table class="table table-striped">
+          <thead>
+            <td>ای دی</td>
+            <td>ستاره</td>
+            <td>توصیف حال</td>
+            <td>تاریخ</td>
+            <td> ای دی کارمند</td>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of  lastPageEmployeeList$ | async">
+              <td class="text-center bold">{{ item.id }}</td>
+              <td class="text-center bold">{{ item.stars }}</td>
+              <td class="text-center bold">{{ item.description }}</td>
+              <td class="text-center bold">{{ item.date }}</td>
+              <td class="text-center bold">{{ item.employeeId }}</td>
+            </tr>
+          </tbody>
+        </table>
         </div>

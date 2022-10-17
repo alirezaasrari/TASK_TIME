@@ -60,6 +60,12 @@ export class TaskTimeService {
     return this.http.get<any>(this.taskTimeUrl + '/LastPage/get-all-lastpages');
   }
 
+  getLastPageById(id: number): Observable<IlastPage> {
+    return this.http.get<IlastPage>(
+      this.taskTimeUrl + `/LastPage/get-last-page-by-id/${id}`
+    );
+  }
+
   // persian calendar api
 
   getpersiandate(): Observable<any> {

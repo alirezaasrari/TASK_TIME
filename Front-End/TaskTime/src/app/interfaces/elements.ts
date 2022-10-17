@@ -18,3 +18,9 @@ export interface IEmployeeُSecondPage{
     emotion: string,
     description: string,
 }
+
+export interface ILastPage{
+    stars:number,
+    description: string,
+    date: string,
+}
