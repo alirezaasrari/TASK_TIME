@@ -1,13 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-
-import { EmployeesService } from './taskTime';
+import { TaskTimeService } from './taskTime';
 
 describe('EmployeesService', () => {
-  let service: EmployeesService;
+  let service: TaskTimeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EmployeesService);
+    service = TestBed.inject(TaskTimeService);
   });
 
   it('should be created', () => {

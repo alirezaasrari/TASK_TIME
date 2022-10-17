@@ -17,7 +17,6 @@
 .work,
 .rest {
     border-radius: 50px;
-    /* padding: 5px; */
     width: 100px;
     height: 50px;
     font-size: 16px;
@@ -46,7 +45,6 @@
 .progress {
     width: 850px;
     height: 5px;
-    /* position: relative; */
 }
 
 ::ng-deep.mat-progress-bar-fill::after {
@@ -84,8 +82,7 @@
     height: 25px;
 }
 .time-bar-container{
-    font-size: 12px;
-    
+    font-size: 12px; 
 }
 .container-timer{
     height: 500px;
@@ -96,8 +93,6 @@
     font-size: 14px;
     border-radius: 7px;
      border:1px solid #cacaca ;
-    /* color: #909090;  */
-
 }
 .custom-select{
     height: 50px;

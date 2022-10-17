@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { IlastPage } from '../interfaces/elements';
 
 @Injectable({
   providedIn: 'root',
@@ -56,8 +55,8 @@ export class TaskTimeService {
 
   // third page services
 
-  getEmployeeById(id: number): Observable<IlastPage> {
-    return this.http.get<IlastPage>(
+  getEmployeeById(id: number): Observable<any> {
+    return this.http.get<any>(
       this.taskTimeUrl + `/Employee/get-employee-by-id/${id}`
     );
   }
@@ -80,8 +79,8 @@ export class TaskTimeService {
     return this.http.get<any>(this.taskTimeUrl + '/LastPage/get-all-lastpages');
   }
 
-  getLastPageById(id: number): Observable<IlastPage> {
-    return this.http.get<IlastPage>(
+  getLastPageById(id: number): Observable<any> {
+    return this.http.get<any>(
       this.taskTimeUrl + `/LastPage/get-last-page-by-id/${id}`
     );
   }

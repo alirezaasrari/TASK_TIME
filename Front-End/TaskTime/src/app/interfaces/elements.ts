@@ -4,11 +4,6 @@ export interface IsecondPageObject {
     description: string
 }
 
-export interface IlastPage{
-    id: number,
-    name: string
-}
-
 export interface IEmployee{
     name:string
 }
