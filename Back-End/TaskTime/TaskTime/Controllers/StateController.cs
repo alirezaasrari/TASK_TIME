@@ -41,5 +41,12 @@ namespace TaskTime.Controllers
             var updatedstate = _stateservice.UpdateState(id,state);
             return Ok(updatedstate);
         }
+
+        [HttpDelete("delete-employee-stae-data")]
+        public IActionResult DeleteEmployeeStateData(int id)
+        {
+            _stateservice.DeleteEmployeeStateData(id);
+            return Ok();
+        }
     }
 }

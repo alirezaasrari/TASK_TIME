@@ -32,5 +32,12 @@ namespace TaskTime.Controllers
             var lastpagebyid = _lastpageservice.GetLastPageById(id);
             return Ok(lastpagebyid);
         }
+
+        [HttpDelete("delete-employee-lastpage-data")]
+        public IActionResult DeleteEmployeeLastPageData(int id)
+        {
+            _lastpageservice.DeleteEmployeeLastPageData(id);
+            return Ok();
+        }
     }
 }
