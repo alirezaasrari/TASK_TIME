@@ -36,6 +36,10 @@ export class TaskTimeService {
     );
   }
 
+  getSecondPageById(id:number){
+    return this.http.get(this.taskTimeUrl + `/SecondPage/get-employee-data-by-id/${id}`);
+  }
+
   // third page services
 
   getEmployeeById(id: number): Observable<IlastPage> {

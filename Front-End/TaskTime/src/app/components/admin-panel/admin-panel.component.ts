@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { IEmployee, IEmployeeُSecondPage } from 'src/app/interfaces/elements';
 import { TaskTimeService } from 'src/app/services/taskTime';
 
 @Component({
@@ -17,6 +18,8 @@ export class AdminPanelComponent implements OnInit {
   employeeList$: Observable<any[]>;
   secondPageEmployeeList$: Observable<any[]>;
   lastPageEmployeeList$: Observable<any[]>;
+  searchCase:number = 0;
+  searchCase2:number = 0;
 
   openSnackBar(message: string) {
     this.snackbar.open(message, 'undo', {
@@ -32,6 +35,32 @@ export class AdminPanelComponent implements OnInit {
       this.ngOnInit();
     });
     this.openSnackBar('کارمند حذف گردید');
+  }
+
+  Employee: IEmployee = {
+   name:''
+  };
+  EmployeeSecondPage: IEmployeeُSecondPage = {
+    dateTime : '',
+    description: '',
+    emotion: ''
+  }
+  search(id: number) {
+    var employee = this.service.getEmployeeById(id).subscribe((res: any) =>
+      {
+       this.Employee.name = res.name
+       });
+    return employee;
+  }
+
+  search2(id: number) {
+    var secondpage = this.service.getSecondPageById(id).subscribe((res: any) =>
+      {
+       this.EmployeeSecondPage.dateTime = res.dateTime,
+       this.EmployeeSecondPage.description = res.description,
+       this.EmployeeSecondPage.emotion = res.emotion
+       });
+    return secondpage;
   }
 
   ngOnInit(): void {
