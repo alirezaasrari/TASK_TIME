@@ -13,6 +13,13 @@ export class TaskTimeService {
 
   // employee services
 
+  postEmployee(data: any) {
+    return this.http.post(
+      this.taskTimeUrl + '/Employee/add-employee',
+      data
+    );
+  }
+
   getAllEmployee(): Observable<any[]> {
     return this.http.get<any>(this.taskTimeUrl + '/Employee/get-all-employee');
   }

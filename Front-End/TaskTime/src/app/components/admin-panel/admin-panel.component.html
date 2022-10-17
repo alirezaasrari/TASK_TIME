@@ -3,6 +3,14 @@
         <br>
         <hr>
         <hr>
+        <div class="text-center bold">
+        <h2 class="text-center"> افزودن کارمند جدید </h2>
+        <form>
+            <input type="text" style="width: 400px; height: 32px; margin: 10px;" name="id" [(ngModel)]="name"
+             placeholder="نام کارمند جدید را وارد کنید">
+             <button mat-raised-button color="primary" (click)="addEmployee(name)">افزودن کارمند جدید</button>
+            </form>
+            </div>
         <hr>
         <br>
         <h2 class="text-center"> لیست کارمندان </h2>

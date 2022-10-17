@@ -22,6 +22,15 @@ export class AdminPanelComponent implements OnInit {
   searchCase2:number = 0;
   searchCase3:number = 0;
   searchCase4:number = 0;
+  name: string = '';
+
+  addEmployee(name:string){
+    this.service.postEmployee({name:name}).subscribe((res: any) => {
+      console.log(res);
+      this.ngOnInit();
+    });
+    this.openSnackBar('کارمند اضافه گردید');
+  }
 
   openSnackBar(message: string) {
     this.snackbar.open(message, 'undo', {
