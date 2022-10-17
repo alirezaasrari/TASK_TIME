@@ -48,6 +48,20 @@ export class AdminPanelComponent implements OnInit {
     this.openSnackBar('کارمند حذف گردید');
   }
 
+  fireDeleteEmployeeSecondPage(id:number):void{
+    this.service.deleteEmployeeSecondPage(id).subscribe((res: any) => {
+      this.ngOnInit();
+    });
+    this.openSnackBar('اطلاعات صفحه دوم کارمند حذف گردید');
+  }
+
+  fireDeleteEmployeeLastPage(id:number):void{
+    this.service.deleteEmployeeLastPage(id).subscribe((res: any) => {
+      this.ngOnInit();
+    });
+    this.openSnackBar('اطلاعات صفحه اخر کارمند حذف گردید');
+  }
+
   Employee: IEmployee = {
    name:''
   };

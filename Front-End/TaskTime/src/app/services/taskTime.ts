@@ -14,18 +14,17 @@ export class TaskTimeService {
   // employee services
 
   postEmployee(data: any) {
-    return this.http.post(
-      this.taskTimeUrl + '/Employee/add-employee',
-      data
-    );
+    return this.http.post(this.taskTimeUrl + '/Employee/add-employee', data);
   }
 
   getAllEmployee(): Observable<any[]> {
     return this.http.get<any>(this.taskTimeUrl + '/Employee/get-all-employee');
   }
 
-  deleteEmployee(id:number|string){
-    return this.http.delete(this.taskTimeUrl + `/Employee/delete-employee?id=${id}`)
+  deleteEmployee(id: number | string) {
+    return this.http.delete(
+      this.taskTimeUrl + `/Employee/delete-employee?id=${id}`
+    );
   }
 
   // second page services
@@ -43,8 +42,16 @@ export class TaskTimeService {
     );
   }
 
-  getSecondPageById(id:number){
-    return this.http.get(this.taskTimeUrl + `/SecondPage/get-employee-data-by-id/${id}`);
+  getSecondPageById(id: number) {
+    return this.http.get(
+      this.taskTimeUrl + `/SecondPage/get-employee-data-by-id/${id}`
+    );
+  }
+
+  deleteEmployeeSecondPage(id: number | string) {
+    return this.http.delete(
+      this.taskTimeUrl + `/SecondPage/delete-employee-second-page-data?id=${id}`
+    );
   }
 
   // third page services
@@ -60,6 +67,12 @@ export class TaskTimeService {
     return this.http.post(
       this.taskTimeUrl + '/LastPage/add-lastpage-data',
       data
+    );
+  }
+
+  deleteEmployeeLastPage(id: number) {
+    return this.http.delete(
+      this.taskTimeUrl + `/LastPage/delete-employee-lastpage-data?id=${id}`
     );
   }
 
