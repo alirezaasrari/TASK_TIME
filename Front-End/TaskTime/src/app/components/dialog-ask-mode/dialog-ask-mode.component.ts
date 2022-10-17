@@ -49,7 +49,7 @@ export class DialogAskModeComponent implements OnInit {
       horizontalPosition: 'left',
       verticalPosition: 'top'
     });
-  }
+  } 
 
   openSnackBar2(message: string) {
     this.snackbar.open(message, 'undo', {

@@ -27,8 +27,8 @@ body { margin: 0; font-family: "IRANSans", "Helvetica Neue", sans-serif; }
     color: black;
  }
 
- .hot-green-snackbar{
-   background: green;
+ .blue-snackbar{
+   background: blue;
    color: white;
  }
 
