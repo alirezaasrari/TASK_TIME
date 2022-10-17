@@ -31,7 +31,7 @@ export class StartComponent implements OnInit {
   ngOnInit(): void {
     this.employeeList$ = this.service.getAllEmployee();
     setInterval(()=>{
-      this.service.getpersiandate2().subscribe((x:any) => {
+      this.service.getpersiandate().subscribe((x:any) => {
         this.dayofweek = x.date.weekday.name,
         this.now = x.time12.full.short.fa,
         this.todaydate = x.date.full.unofficial.usual.fa,

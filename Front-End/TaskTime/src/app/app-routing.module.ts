@@ -5,15 +5,18 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { CurrentWorkDayComponent } from './components/current-work-day/current-work-day.component';
 import { StartComponent } from './components/dialog-ask-mode/start/start.component';
 
-
 const routes: Routes = [
   { path: '', component: StartComponent },
+  {
+    path: 'adminpanel',
+    component: AdminPanelComponent,
+  },
   { path: 'current-day/:id', component: CurrentWorkDayComponent },
-  { path: 'admin-panel', component: AdminPanelComponent }
+  { path: 'admin-panel', component: AdminPanelComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

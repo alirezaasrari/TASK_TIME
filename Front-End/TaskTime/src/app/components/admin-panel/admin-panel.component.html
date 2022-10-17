@@ -1,3 +1,165 @@
-<div  class="d-flex flex-row">
-
-</div>
+    <div style="padding-right: 10%; padding-left: 10%; padding-top: 5%;">
+        <h1 class="text-center" style="font-weight: bold;"> ---- پنل مدیریت ----</h1>
+        <br>
+        <hr>
+        <hr>
+        <hr>
+        <br>
+        <h2 class="text-center"> لیست کارمندان </h2>
+        <table class="table table-striped">
+          <thead>
+            <th>ای دی</th>
+            <th>نام و نام خانوادگی</th>
+            <th>حذف از لیست ثبت نام شدگان</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of  employeeList$ | async">
+              <td class="text-center bold">{{ item.id }}</td>
+              <td class="text-center bold">{{ item.name }}</td>
+              <td class="text-center">
+                <button 
+                  (click)="fireDeleteEmployee(item.id)"
+                  id="delete{{ item.id }}"
+                  mat-stroked-button
+                  color="warn"
+                  class="bold"
+                >
+                   حذف از لیست کارمندان
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <hr>
+        <hr>
+        <br>
+        
+        <!-- <h2 class="text-center">لیست کاربران</h2>
+        <div class="text-center bold">
+          <p>ای دی کاربر در لیست ثبت نامی ها را سرچ و اطلاعات را مشاهده کنید</p>
+          <form>
+            <input type="number" style="width: 400px; height: 32px; margin: 10px;" name="id" [(ngModel)]="searchCase"
+             placeholder="ای دی را وارد و اطلاعات را دریافت کنید">
+             <button mat-raised-button color="primary" (click)="search(searchCase)">جستجو</button>
+          </form>
+          <br>
+        
+          <table class="table table-striped">
+            <thead>
+              <th>نام</th>
+              <th>نام خانوادگی</th>
+              <th>ایمیل</th>
+              <th>تلفن</th>
+              <th>پسوورد</th>
+              <th>تصویر</th>
+              <th>کد ملی</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center bold">{{User.name}}</td>
+                <td class="text-center bold">{{User.family}}</td>
+                <td class="text-center bold">{{User.email}}</td>
+                <td class="text-center bold">{{User.phone}}</td>
+                <td class="text-center bold">{{User.password}}</td>
+                <td class="text-center bold">{{User.picture}}</td>
+                <td class="text-center bold">{{User.nationalCode}}</td>
+              </tr>
+            </tbody>
+          </table>
+        
+          <br>
+          <br>
+          <hr>
+        </div>
+        <br>
+        <table class="table table-striped">
+          <thead>
+            <th>ای دی</th>
+            <th>ای دی کاربر در لیست ثبت نامی ها</th>
+            <th>گرفتن نقش</th>
+            <th>حذف از لیست کاربران</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of userList$ | async">
+              <td class="text-center bold">{{ item.id }}</td>
+              <td class="text-center bold">{{ item.registerId }}</td>
+              <td class="text-center bold">
+                <select name="rolls" style="margin: 10px;">
+                  <option *ngFor="let rollname of rollList$ 
+                  | async" [value]="rollname.name">
+                    {{rollname.name}}</option>
+                </select>
+                <button
+                  (click)="fireAddRoll(item.id)"
+                  id="user{{ item.id }}"
+                  mat-stroked-button
+                  color="primary"
+                  class="bold"
+                >
+                   منتصب کردن کاربر به نقش انتخاب شده
+                </button>
+              </td>
+              <td class="text-center">
+                <button 
+                  (click)="fireDeleteUser(item.id)"
+                  id="delete{{ item.id }}"
+                  mat-stroked-button
+                  color="warn"
+                  class="bold"
+                >
+                  حذف از لیست کاربران
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <br>
+        <hr>
+        <hr>
+        <br>
+        
+        <h2 class="text-center">لیست نقش ها</h2>
+        <div class="text-center bold">
+        <p>برای افزودن یک نقش جدید می توانید از این قسمت استفاده و نقش را ثبت نمایید</p>
+          <form>
+            <input type="string" style="width: 400px; height: 32px; margin: 10px;"
+             name="id" [(ngModel)]="rollName"
+             placeholder="عنوان نقش را اضافه کنید">
+             <button mat-raised-button color="primary" (click)="fireAddRoll(this.rollName)">افزودن نقش</button>
+          </form>
+        </div>
+          <br>
+        
+        <table class="table table-striped">
+          <thead>
+            <th>ای دی</th>
+            <th>عنوان نقش</th>  
+            <th>ای دی کاربران  دارای این نقش در لیست کاربران</th>
+            <th>حذف از لیست نقش ها</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of rollList$ | async">
+              <td class="text-center bold">{{ item.id }}</td>
+              <td class="text-center bold">{{item.name}}</td>
+              <td class="text-center bold">
+                  
+              </td>
+              <td class="text-center">
+                <button 
+                  (click)="fireDeleteRoll(item.id)"
+                  id="delete{{ item.id }}"
+                  mat-stroked-button
+                  color="warn"
+                  class="bold"
+                >
+                  حذف نقش
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <br> -->
+        </div>

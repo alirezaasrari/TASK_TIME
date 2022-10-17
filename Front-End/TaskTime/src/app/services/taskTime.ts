@@ -4,44 +4,61 @@ import { HttpClient } from '@angular/common/http';
 import { IlastPage } from '../interfaces/elements';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskTimeService {
-readonly taskTimeUrl = 'https://localhost:7005/api';
+  readonly taskTimeUrl = 'https://localhost:7005/api';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-// employee services
+  // employee services
 
-getAllEmployee():Observable<any[]> {
-return this.http.get<any>(this.taskTimeUrl + '/Employee/get-all-employee');
-}
-// second page services
-
-postsecondpage(data:any){
-  return this.http.post(this.taskTimeUrl + '/SecondPage/post-employee-secondpagedata', data)
-}
-//.catch(this.errorHandler);
-// errorHandler(error: HttpErrorResponse){
-//   return Observable.throw(error.message || "server Error");
-// }
-postlastpage(data:any){
-  return this.http.post(this.taskTimeUrl + '/LastPage/add-lastpage-data' , data)  
-}
-
-// third page services
-
-getEmployeeById(id:number):Observable<IlastPage> {
-  return this.http.get<IlastPage>(this.taskTimeUrl + `/Employee/get-employee-by-id/${id}`);
+  getAllEmployee(): Observable<any[]> {
+    return this.http.get<any>(this.taskTimeUrl + '/Employee/get-all-employee');
   }
 
-// persian calendar api
+  deleteEmployee(id:number|string){
+    return this.http.delete(this.taskTimeUrl + `/Employee/delete-employee?id=${id}`)
+  }
 
-getpersiandate():Observable<any> {
-  return this.http.get<any>('http://worldclockapi.com/api/json/est/now');
-}
+  // second page services
 
-getpersiandate2():Observable<any> {
-  return this.http.get<any>('https://api.keybit.ir/time/');
-}
+  postsecondpage(data: any) {
+    return this.http.post(
+      this.taskTimeUrl + '/SecondPage/post-employee-secondpagedata',
+      data
+    );
+  }
+
+  getAllSecondPages(): Observable<any[]> {
+    return this.http.get<any>(
+      this.taskTimeUrl + '/SecondPage/get-all-second-page-data'
+    );
+  }
+
+  // third page services
+
+  getEmployeeById(id: number): Observable<IlastPage> {
+    return this.http.get<IlastPage>(
+      this.taskTimeUrl + `/Employee/get-employee-by-id/${id}`
+    );
+  }
+
+  // lastpage services
+  postlastpage(data: any) {
+    return this.http.post(
+      this.taskTimeUrl + '/LastPage/add-lastpage-data',
+      data
+    );
+  }
+
+  getAllLastPages(): Observable<any[]> {
+    return this.http.get<any>(this.taskTimeUrl + '/LastPage/get-all-lastpages');
+  }
+
+  // persian calendar api
+
+  getpersiandate(): Observable<any> {
+    return this.http.get<any>('https://api.keybit.ir/time/');
+  }
 }
