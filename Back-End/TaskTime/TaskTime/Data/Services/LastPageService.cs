@@ -28,5 +28,15 @@ namespace TaskTime.Data.Services
             var _lastpage = _context.LastPages.FirstOrDefault(x => x.Id == LastPageId);
             return _lastpage;
         }
+
+        public void DeleteEmployeeLastPageData(int id)
+        {
+            var lastpage = _context.LastPages.FirstOrDefault(n => n.Id == id);
+            if (lastpage != null)
+            {
+                _context.LastPages.Remove(lastpage);
+                _context.SaveChanges();
+            }
+        }
     }
 }

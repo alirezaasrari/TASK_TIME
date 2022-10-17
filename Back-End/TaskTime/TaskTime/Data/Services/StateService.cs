@@ -40,5 +40,15 @@ namespace TaskTime.Data.Services
             return _statetobeupdate;
         }
 
+        public void DeleteEmployeeStateData(int id)
+        {
+            var state = _context.States.FirstOrDefault(n => n.Id == id);
+            if (state != null)
+            {
+                _context.States.Remove(state);
+                _context.SaveChanges();
+            }
+        }
+
     }
 }
