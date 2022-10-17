@@ -21,3 +21,13 @@ body { margin: 0; font-family: "IRANSans", "Helvetica Neue", sans-serif; }
  .ltr{
     direction: ltr;
  }
+
+ .green-snackbar{
+    background: greenyellow;
+    color: black;
+ }
+
+ .red-snackbar{
+    background: yellow;
+    color: green;
+ }

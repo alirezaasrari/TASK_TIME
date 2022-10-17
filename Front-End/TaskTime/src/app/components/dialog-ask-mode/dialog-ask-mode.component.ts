@@ -38,16 +38,30 @@ export class DialogAskModeComponent implements OnInit {
       employeeId: this.employeeId,
       emotion: emotion,
       description: description
-    }).subscribe()
+    }).subscribe(),
+    this.openSnackBar('شما به صفحه شمارش ساعات کار و استراحت وارد شدید');
   }
-
 
   openSnackBar(message: string) {
     this.snackbar.open(message, 'undo', {
-      duration: 4000,
+      duration: 3000,
       panelClass: ['green-snackbar'],
       horizontalPosition: 'left',
+      verticalPosition: 'top'
     });
+  }
+
+  openSnackBar2(message: string) {
+    this.snackbar.open(message, 'undo', {
+      duration: 3000,
+      panelClass: ['red-snackbar'],
+      horizontalPosition: 'right',
+      verticalPosition: 'top'
+    });
+  }
+
+  onCancel(){
+    this.openSnackBar2(' میتوانید مجددا برای ورود به صفحه ثبت کار و استراحت اقدام نمایید');
   }
 
   ngOnInit(): void {
@@ -57,22 +71,3 @@ export class DialogAskModeComponent implements OnInit {
      })
   }
 }
-
- //   catchError(error => {
-    //     if (error.error instanceof ErrorEvent) {
-    //         this.errorMsg = `Error: ${error.error.message}`;
-    //     } else {
-    //         this.errorMsg = `Error: ${error.message}`;
-    //     }
-    //     return of([]);
-    // })
-    //     p =>
-    //     {
-    //       if(this.errorMsg != null){
-    //         this.openSnackBar('گزارش روزانه با شکست مواجه گردید');
-    //       }else{
-    //         this.openSnackBar('گزارش روزانه با موفقیت ثبت گردید');
-    //       }
-    //     }
-    //  );
-    //  this.openSnackBar('گزارش روزانه با موفقیت ثبت گردید');

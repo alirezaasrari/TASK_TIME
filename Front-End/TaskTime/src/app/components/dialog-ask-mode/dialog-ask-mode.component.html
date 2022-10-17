@@ -25,7 +25,7 @@
             (click)="onSubmit(employeeId,emotion,description)" class="border iransans yes" mat-raised-button>
                  آره
             </button>
-            <button mat-dialog-close class="border iransans" mat-raised-button>نه هنوز</button>
+            <button mat-dialog-close class="border iransans" mat-raised-button (click)="onCancel()">نه هنوز</button>
         </div>
     </div>
 

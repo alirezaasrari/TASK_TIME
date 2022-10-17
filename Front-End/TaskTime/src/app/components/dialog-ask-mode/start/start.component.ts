@@ -9,6 +9,7 @@ import { DialogAskModeComponent } from '../dialog-ask-mode.component';
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.css'],
 })
+
 export class StartComponent implements OnInit {
   employeeList$: Observable<any[]>;
   date$:Observable<any>;
@@ -19,18 +20,11 @@ export class StartComponent implements OnInit {
   dayofweek: any;
   employeeId: number;
   selectedId: number = 1;
-  defaultValue:string = "لطفا نام خود را انتخاب کنید";
   now: any;
-  nowone : any;
   day:string;
   month:string;
   year:string;
-  constructor(public dialog: MatDialog, private service: TaskTimeService) {
-    // setInterval(() => {
-    //   this.now = new Date().toLocaleTimeString().split(" ")[0];
-    //   this.nowone = new Date().toLocaleTimeString().split(" ")[1];
-    // }, 1000);
-  }
+  constructor(public dialog: MatDialog, private service: TaskTimeService){}
   selectIdHandler(event: any){
    this.selectedId = event.target.value;
   }
@@ -46,25 +40,6 @@ export class StartComponent implements OnInit {
         this.year = x.date.day.number.fa
       });
     },1000) 
-    // this.service.getpersiandate().subscribe(x => {
-    //   if(x.dayOfTheWeek == "Sunday"){
-    //     this.dayofweek = "یکشنبه"
-    //   }else if(x.dayOfTheWeek == "Saturday"){
-    //     this.dayofweek = "شنبه"
-    //   }else if(x.dayOfTheWeek == "Monday"){
-    //     this.dayofweek = "دوشنبه"
-    //   }else if(x.dayOfTheWeek == "Tuseday"){
-    //     this.dayofweek = "سه شنبه"
-    //   }else if(x.dayOfTheWeek == "wedensday"){
-    //     this.dayofweek = "چهارشنبه"
-    //   }else if(x.dayOfTheWeek == "tursday"){
-    //     this.dayofweek = "پنجشنبه"
-    //   }else if(x.dayOfTheWeek == "Friday"){
-    //     this.dayofweek = "جمعه"
-    //   }
-    // })
-    // this.todaydate = this.now.toLocaleDateString()
-    
   }
 
   public onOpenDialog() {

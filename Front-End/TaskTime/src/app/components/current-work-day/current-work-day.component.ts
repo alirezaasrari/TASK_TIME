@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-// import * as moment from 'jalali-moment';
 import { interval, Observable, of, takeUntil, timer } from 'rxjs';
 import { TaskTimeService } from 'src/app/services/taskTime';
 import { DialogLeavingWorkComponent } from './dialog-leaving-work/dialog-leaving-work.component';
@@ -26,9 +25,7 @@ export class CurrentWorkDayComponent implements OnInit {
 
 
   startTimer(seconds: number) {
-    // const time = seconds;
     const timer$ = interval(1000);
-
     const sub = timer$.subscribe((sec) => {
       this.progressbarValue = sec * 100 / seconds;
       this.curSec = sec;
@@ -39,7 +36,6 @@ export class CurrentWorkDayComponent implements OnInit {
     });
   }
   
-
   constructor(public dialog: MatDialog,  private service: TaskTimeService,
     private route: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -60,30 +56,4 @@ export class CurrentWorkDayComponent implements OnInit {
       }
     });
   }
-
-
-  // public getCurrentTime(){
-
-  //   let d = new Date(); 
-  //   let H =d.getHours(); 
-  //   let M =d.getMinutes(); 
-  //   let time = H + ":" + M;
-
-  //   console.log(time);
-  // }
-
- 
-  // nearest midnight in the past:
-  // let d = new Date();
-  // d.setHours(0,0,0,0);
-
-
-
-//   public updateColor() {
-// if (this.rest === true){
-//   return 'warn';
-// }else{
-//   return 'primary';
-// }
-//   }
 }
