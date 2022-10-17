@@ -15,8 +15,11 @@
         <br>
         <h2 class="text-center"> لیست کارمندان </h2>
         <table class="table table-striped">
-          <thead>
-          </thead>
+            <thead>
+                <th class="text-center bold">ای دی</th>
+                <th class="text-center bold">نام و نام خانوادگی</th>
+                <th class="text-center bold">حذف</th>
+              </thead>
           <tbody>
             <tr *ngFor="let item of  employeeList$ | async">
               <td class="text-center bold">{{ item.id }}</td>
@@ -68,9 +71,9 @@
 </form>
 <table class="table table-striped">
 <thead>
-  <th>تاریخ</th>
-  <th>توصیف</th>
-  <th>احساس</th>
+  <th class="text-center bold">تاریخ</th>
+  <th class="text-center bold">توصیف</th>
+  <th class="text-center bold">احساس</th>
 </thead>
 <tbody>
   <tr>
@@ -85,11 +88,11 @@
   <br>
         <table class="table table-striped">
           <thead>
-            <td>ای دی</td>
-            <td>تاریخ</td>
-            <td>ایموجی</td>
-            <td>توصیف حال</td>
-            <td> ای دی کارمند</td>
+            <th class="text-center bold">ای دی</th>
+            <th class="text-center bold">تاریخ</th>
+            <th class="text-center bold">ایموجی</th>
+            <th class="text-center bold">توصیف حال</th>
+            <th class="text-center bold"> ای دی کارمند</th>
           </thead>
           <tbody>
             <tr *ngFor="let item of  secondPageEmployeeList$ | async">
@@ -113,7 +116,7 @@
   </form>
   <table class="table table-striped">
     <thead>
-      <th>نام خانوادگی</th>
+      <th class="text-center bold">نام و نام خانوادگی</th>
     </thead>
     <tbody>
       <tr>
@@ -132,9 +135,9 @@
 </form>
 <table class="table table-striped">
 <thead>
-  <th>ستاره</th>
-  <th>هرچه میخواهد دل تنگت بگو</th>
-  <th>تاریخ</th>
+  <th class="text-center bold">ستاره</th>
+  <th class="text-center bold">هرچه میخواهد دل تنگت بگو</th>
+  <th class="text-center bold">تاریخ</th>
 </thead>
 <tbody>
   <tr>
@@ -149,11 +152,11 @@
   <br>
         <table class="table table-striped">
           <thead>
-            <td>ای دی</td>
-            <td>ستاره</td>
-            <td>توصیف حال</td>
-            <td>تاریخ</td>
-            <td> ای دی کارمند</td>
+            <th class="text-center bold">ای دی</th>
+            <th class="text-center bold">ستاره</th>
+            <th class="text-center bold">توصیف حال</th>
+            <th class="text-center bold">تاریخ</th>
+            <th class="text-center bold"> ای دی کارمند</th>
           </thead>
           <tbody>
             <tr *ngFor="let item of  lastPageEmployeeList$ | async">
