@@ -20,7 +20,8 @@ export class StartComponent implements OnInit {
   dayofweek: any;
   employeeId: number;
   selectedId: number = 1;
-  now: any;
+  hour: any;
+  min:any;
   day:string;
   month:string;
   year:string;
@@ -33,7 +34,8 @@ export class StartComponent implements OnInit {
     setInterval(()=>{
       this.service.getpersiandate().subscribe((x:any) => {
         this.dayofweek = x.date.weekday.name,
-        this.now = x.time12.full.short.fa,
+        this.hour = x.time24.hour.fa,
+        this.min = x.time24.minute.fa,
         this.todaydate = x.date.full.unofficial.usual.fa,
         this.day = x.date.year.number.fa ,
         this.month = x.date.month.name,

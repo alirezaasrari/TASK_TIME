@@ -41,7 +41,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     MatProgressBarModule,
     MatIconModule,
     NgxStarRatingModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
