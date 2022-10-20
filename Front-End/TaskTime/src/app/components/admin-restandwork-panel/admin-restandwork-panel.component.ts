@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { IEmployeeDetail, ISecondPageEmployeeDetail } from 'src/app/interfaces/elements';
 import { TaskTimeService } from 'src/app/services/taskTime';
 
 @Component({
@@ -9,17 +10,36 @@ import { TaskTimeService } from 'src/app/services/taskTime';
 })
 export class AdminRestandworkPanelComponent implements OnInit {
   constructor(private service: TaskTimeService) {}
-  employeeList$: Observable<any[]>;
-  secondPageEmployeeList$: Observable<any[]>;
-
-  // name(id: number): any {
-  //   // this.service.getEmployeeById(id).subscribe((x: any) => {
-  //   //   return x.name;
-  //   // });
-  // }
+  employeeList$: Observable<IEmployeeDetail[]>;
+  secondPageEmployeeList: ISecondPageEmployeeDetail[]=[];
 
   ngOnInit(): void {
+    
     this.employeeList$ = this.service.getAllEmployee();
-    this.secondPageEmployeeList$ = this.service.getAllSecondPages();
+    this.service.getAllSecondPages().subscribe(x => {
+      if(x.length>0)
+      x.forEach(element => {
+        of(element).subscribe(p =>{
+          setTimeout(() => {
+            console.log(p.id);
+          this.service.getEmployeeById(p.employeeId ).subscribe((y: IEmployeeDetail) => {
+          
+            if(y != null)              
+              this.secondPageEmployeeList.push({
+                datetime: element.dateTime,
+                description:element.description,
+                emotion:element.emotion,
+                employeeid:y.id,
+                id:y.id,
+                name: y.name
+                
+              });        
+          });
+        }, 500);
+        });
+        })
+        
+     
+    });
   }
 }

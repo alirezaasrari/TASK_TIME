@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { IEmployeeDetail, IGetAllLastPages, IGetAllSecondPages, IPostEmployee, IPostLastPageData, IPostSecondPageData } from '../interfaces/elements';
 
 @Injectable({
   providedIn: 'root',
@@ -12,12 +13,12 @@ export class TaskTimeService {
 
   // employee services
 
-  postEmployee(data: any) {
+  postEmployee(data: IPostEmployee) {
     return this.http.post(this.taskTimeUrl + '/Employee/add-employee', data);
   }
 
-  getAllEmployee(): Observable<any[]> {
-    return this.http.get<any>(this.taskTimeUrl + '/Employee/get-all-employee');
+  getAllEmployee(): Observable<IEmployeeDetail[]> {
+    return this.http.get<IEmployeeDetail[]>(this.taskTimeUrl + '/Employee/get-all-employee');
   }
 
   deleteEmployee(id: number | string) {
@@ -28,15 +29,15 @@ export class TaskTimeService {
 
   // second page services
 
-  postsecondpage(data: any) {
+  postsecondpage(data: IPostSecondPageData) {
     return this.http.post(
       this.taskTimeUrl + '/SecondPage/post-employee-secondpagedata',
       data
     );
   }
 
-  getAllSecondPages(): Observable<any[]> {
-    return this.http.get<any>(
+  getAllSecondPages(): Observable<IGetAllSecondPages[]> {
+    return this.http.get<IGetAllSecondPages[]>(
       this.taskTimeUrl + '/SecondPage/get-all-second-page-data'
     );
   }
@@ -55,14 +56,14 @@ export class TaskTimeService {
 
   // third page services
 
-  getEmployeeById(id: number): Observable<any> {
-    return this.http.get<any>(
+  getEmployeeById(id: number): Observable<IEmployeeDetail> {
+    return this.http.get<IEmployeeDetail>(
       this.taskTimeUrl + `/Employee/get-employee-by-id/${id}`
     );
   }
 
   // lastpage services
-  postlastpage(data: any) {
+  postlastpage(data: IPostLastPageData) {
     return this.http.post(
       this.taskTimeUrl + '/LastPage/add-lastpage-data',
       data
@@ -75,8 +76,8 @@ export class TaskTimeService {
     );
   }
 
-  getAllLastPages(): Observable<any[]> {
-    return this.http.get<any>(this.taskTimeUrl + '/LastPage/get-all-lastpages');
+  getAllLastPages(): Observable<IGetAllLastPages[]> {
+    return this.http.get<IGetAllLastPages[]>(this.taskTimeUrl + '/LastPage/get-all-lastpages');
   }
 
   getLastPageById(id: number): Observable<any> {
