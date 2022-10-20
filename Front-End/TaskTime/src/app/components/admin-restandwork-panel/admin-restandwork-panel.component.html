@@ -6,7 +6,7 @@
     <div class="col d-flex flex-row align-items-center">
       <span class="ms-2">{{ item.name }}</span>
       <label class="switch">
-        <input type="checkbox" checked />
+        <input type="checkbox" [checked]="check" />
         <span class="slider round"></span>
       </label>
       <span class="me-2">{{ item.datetime.split("T")[1].split('.')[0].substr(0,5)}}</span>
