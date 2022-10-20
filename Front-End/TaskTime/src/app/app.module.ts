@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { AdminRestandworkPanelComponent } from './components/admin-restandwork-panel/admin-restandwork-panel.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     CurrentWorkDayComponent,
     DialogLeavingWorkComponent,
     AdminPanelComponent,
+    AdminRestandworkPanelComponent,
   ],
   imports: [
     MatSnackBarModule,

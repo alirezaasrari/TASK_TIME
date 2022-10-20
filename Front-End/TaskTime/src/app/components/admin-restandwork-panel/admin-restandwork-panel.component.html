@@ -1,0 +1,15 @@
+<div class="container-fluid d-flex row w-100 iransans">
+  <div
+    *ngFor="let item of secondPageEmployeeList$ | async"
+    class="py-4 col-sm-6 col-md-4 col-lg-3 col-xl-2"
+  >
+    <div class="col d-flex flex-row align-items-center">
+      <span class="ms-2">{{ item.employeeId }}</span>
+      <label class="switch">
+        <input type="checkbox" checked />
+        <span class="slider round"></span>
+      </label>
+      <span class="me-2">{{ item.dateTime.split("T")[1].split('.')[0] }}</span>
+    </div>
+  </div>
+</div>
