@@ -18,7 +18,6 @@ export class AdminRestandworkPanelComponent implements OnInit {
   check:boolean = false;
 
   ngOnInit(): void {
-    this.employeeList$ = this.service.getAllEmployee();
     this.service.getAllSecondPages().subscribe((x) => {
       if (x.length > 0)
         x.forEach((element) => {
@@ -37,7 +36,7 @@ export class AdminRestandworkPanelComponent implements OnInit {
                       name: y.name,
                     });
                 });
-            }, 500);
+            }, 100);
           });
         });
     });
