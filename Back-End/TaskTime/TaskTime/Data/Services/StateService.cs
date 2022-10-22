@@ -35,6 +35,7 @@ namespace TaskTime.Data.Services
             {
                 _statetobeupdate.EmployeeState = state.EmployeeState;
                 _statetobeupdate.EmployeeId = state.EmployeeId;
+                _statetobeupdate.Date = DateTime.Now;
                 _context.SaveChanges();
             };
             return _statetobeupdate;

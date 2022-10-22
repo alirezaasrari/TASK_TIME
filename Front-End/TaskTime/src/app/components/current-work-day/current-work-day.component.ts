@@ -69,7 +69,7 @@ export class CurrentWorkDayComponent implements OnInit {
   ngOnInit(): void {
     this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
     this.service.getEmployeeStateById(this.selectedId).subscribe((x) => {
-      this.state = x.employeeState;
+      this.state = x.employeeState = "finish" ? "rest":"work";
       this.stateTime = x.date.split('T')[1].substr(0, 5);
     });
     this.service.getEmployeeById(this.selectedId).subscribe((x) => {
