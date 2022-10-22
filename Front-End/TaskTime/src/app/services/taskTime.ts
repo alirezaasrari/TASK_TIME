@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { IEmployeeDetail, IGetAllLastPages, IGetAllSecondPages, IPostEmployee, IPostLastPageData, IPostSecondPageData } from '../interfaces/elements';
+import { IEmployeeDetail, IEmployeeStateDetail, IEmployeeStateDetailForUpdate, IGetAllLastPages, IGetAllSecondPages, IPostEmployee, IPostLastPageData, IPostSecondPageData } from '../interfaces/elements';
 
 @Injectable({
   providedIn: 'root',
@@ -60,6 +60,23 @@ export class TaskTimeService {
     return this.http.get<IEmployeeDetail>(
       this.taskTimeUrl + `/Employee/get-employee-by-id/${id}`
     );
+  }
+
+  getEmployeeStateById(id: number): Observable<IEmployeeStateDetail> {
+    return this.http.get<IEmployeeStateDetail>(
+      this.taskTimeUrl + `/State/get-employee-state-by-id/${id}`
+    );
+  }
+
+  postemployeestate(data: IEmployeeStateDetailForUpdate) {
+    return this.http.post(
+      this.taskTimeUrl + '/State/add-employee-state',
+      data
+    );
+  }
+
+  updateEmployeeState(id:number|string, data:IEmployeeStateDetailForUpdate){
+    return this.http.put(this.taskTimeUrl + `/State/update-employee-state/${id}`, data)
   }
 
   // lastpage services

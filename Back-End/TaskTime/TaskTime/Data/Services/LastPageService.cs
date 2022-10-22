@@ -25,13 +25,13 @@ namespace TaskTime.Data.Services
         public List<LastPage> GetAllLastPages() => _context.LastPages.ToList();
         public LastPage GetLastPageById(int LastPageId)
         {
-            var _lastpage = _context.LastPages.FirstOrDefault(x => x.Id == LastPageId);
+            var _lastpage = _context.LastPages.FirstOrDefault(x => x.EmployeeId == LastPageId);
             return _lastpage;
         }
 
         public void DeleteEmployeeLastPageData(int id)
         {
-            var lastpage = _context.LastPages.FirstOrDefault(n => n.Id == id);
+            var lastpage = _context.LastPages.FirstOrDefault(n => n.EmployeeId == id);
             if (lastpage != null)
             {
                 _context.LastPages.Remove(lastpage);

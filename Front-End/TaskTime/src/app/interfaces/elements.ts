@@ -69,3 +69,15 @@ export interface IGetAllLastPages{
     employeeId: number,
     employee?: IEmployeeDetail
 }
+
+export interface IEmployeeStateDetail{
+    id:number,
+    date: string,
+    employeeState: string,
+    employeeId: number
+}
+
+export interface IEmployeeStateDetailForUpdate{
+    employeeState: string,
+    employeeId:number
+}

@@ -21,6 +21,7 @@ export class DialogAskModeComponent implements OnInit {
   emotionList: any[] = ['خیلی بد', 'بد', 'متوسط', 'خوب', 'عالی'];
   emotion: string = '';
   employeeId: number;
+  restState:string = "rest";
   description = '';
   errorMsg: string;
   secondPageObject: IsecondPageObject = {
@@ -34,6 +35,7 @@ export class DialogAskModeComponent implements OnInit {
   }
 
   onSubmit(id: number, emotion: string, description: string) {
+    this.service.postemployeestate({employeeState:this.restState,employeeId:this.employeeId}).subscribe();
     this.service.postsecondpage({
       employeeId: this.employeeId,
       emotion: emotion,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { IEmployeeDetail } from 'src/app/interfaces/elements';
 import { TaskTimeService } from 'src/app/services/taskTime';
 import { DialogAskModeComponent } from '../dialog-ask-mode.component';
 
@@ -11,17 +12,13 @@ import { DialogAskModeComponent } from '../dialog-ask-mode.component';
 })
 
 export class StartComponent implements OnInit {
-  employeeList$: Observable<any[]>;
-  date$:Observable<any>;
-  allEmployee: any[] = [];
-  length: number;
-  todaydate:any;
-  employee: any;
-  dayofweek: any;
-  employeeId: number;
+  employeeList$: Observable<IEmployeeDetail[]>;
+  todaydate:string;
+  employee: string;
+  dayofweek: string;
   selectedId: number = 1;
-  hour: any;
-  min:any;
+  hour: string;
+  min:string;
   day:string;
   month:string;
   year:string;

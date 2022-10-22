@@ -5,11 +5,11 @@
   <div class="time bold">{{ hour }}:{{ min }}</div>
   <div class="date h6">{{ year }} {{ month }} ماه {{ day }}</div>
   <div class="d-flex input">
-    <mat-select
+    <select
       (change)="selectIdHandler($event)"
       class="custom-select border selected"
     >
-      <mat-option
+      <option
         [value]="employee.id"
         *ngFor="let employee of employeeList$ | async"
       >
@@ -19,8 +19,8 @@
             " " }}{{
             employee.name.split(" ")[2]
         }}
-      </mat-option>
-    </mat-select>
+      </option>
+    </select>
   </div>
   <div class="startBtn mt-3" (click)="onOpenDialog()">
     <svg
