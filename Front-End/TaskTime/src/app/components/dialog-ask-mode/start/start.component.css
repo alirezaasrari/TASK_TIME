@@ -23,6 +23,11 @@
 .custom-select{
     height: 50px;
     width: 250px;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: bolder;
     border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
