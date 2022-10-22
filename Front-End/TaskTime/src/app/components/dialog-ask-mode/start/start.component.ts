@@ -7,7 +7,7 @@ import { DialogAskModeComponent } from '../dialog-ask-mode.component';
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
-  styleUrls: ['./start.component.css'],
+  styleUrls: ['./start.component.css'], 
 })
 
 export class StartComponent implements OnInit {

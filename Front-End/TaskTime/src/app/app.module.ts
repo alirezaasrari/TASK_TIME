@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 import { AdminRestandworkPanelComponent } from './components/admin-restandwork-panel/admin-restandwork-panel.component';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { AdminRestandworkPanelComponent } from './components/admin-restandwork-p
     AdminRestandworkPanelComponent,
   ],
   imports: [
+    MatSelectModule,
     MatSnackBarModule,
     BrowserModule,
     FormsModule,
