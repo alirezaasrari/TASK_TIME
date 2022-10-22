@@ -55,6 +55,9 @@ export class CurrentWorkDayComponent implements OnInit {
         employeeState: this.restState,
       })
       .subscribe();
+    this.service
+      .getEmployeeStateById(this.selectedId)
+      .subscribe((x) => (this.stateTime = x.date.split('T')[1].substr(0, 5)));
   }
   constructor(
     public dialog: MatDialog,
