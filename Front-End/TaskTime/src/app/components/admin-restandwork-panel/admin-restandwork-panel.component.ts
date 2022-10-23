@@ -16,7 +16,7 @@ export class AdminRestandworkPanelComponent implements OnInit {
   employeeList$: Observable<IEmployeeDetail[]>;
   secondPageEmployeeList: ISecondPageEmployeeDetail[] = [];
   check:boolean = false;
-
+ 
   ngOnInit(): void {
     this.service.getAllSecondPages().subscribe((x) => {
       if (x.length > 0)

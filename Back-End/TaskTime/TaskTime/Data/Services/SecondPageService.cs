@@ -50,7 +50,7 @@ namespace TaskTime.Data.Services
 
         public void DeleteEmployeeSecondPageData(int id) 
         {
-          var secondpage = _context.SecondPages.FirstOrDefault(n => n.EmployeeId == id);
+          var secondpage = _context.SecondPages.FirstOrDefault(n => n.Id == id);
             if(secondpage != null)
             {
                 _context.SecondPages.Remove(secondpage);

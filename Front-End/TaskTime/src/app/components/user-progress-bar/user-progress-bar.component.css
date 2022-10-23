@@ -1,0 +1,12 @@
+.bar-container{
+    width: 850px;
+    height: 5px;
+    position: relative;
+    direction: ltr;
+    background-color: #eaeaea ;
+}
+.light-grey{
+    
+    height: 5px;
+    direction: ltr;
+}

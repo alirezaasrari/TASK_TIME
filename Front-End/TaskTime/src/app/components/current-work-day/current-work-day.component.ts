@@ -1,16 +1,32 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { interval, Observable, of, takeUntil, timer } from 'rxjs';
+import { interval, Observable, of } from 'rxjs';
+import { EunitSectionColor, IUnitInfo } from 'src/app/interfaces/elements';
+import { ShowTimeService } from 'src/app/services/show-time.service';
+import { TaskStatusService } from 'src/app/services/task-status.service';
 import { TaskTimeService } from 'src/app/services/taskTime';
+import { SectionComponent } from '../user-progress-bar/section/section.component';
+import { UserProgressBarComponent } from '../user-progress-bar/user-progress-bar.component';
 import { DialogLeavingWorkComponent } from './dialog-leaving-work/dialog-leaving-work.component';
 
 @Component({
   selector: 'app-current-work-day',
   templateUrl: './current-work-day.component.html',
   styleUrls: ['./current-work-day.component.css'],
+  providers: [SectionComponent],
 })
 export class CurrentWorkDayComponent implements OnInit {
+  constructor(
+    public dialog: MatDialog,
+    private service: TaskTimeService,
+    private route: ActivatedRoute,
+    public showTime: ShowTimeService,
+    public taskStatus: TaskStatusService,
+    private userProgressBarComponent: UserProgressBarComponent,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+  startWork: EventEmitter<IUnitInfo> = new EventEmitter<IUnitInfo>();
   progressbarValue = 0;
   selectedId: number;
   id: number;
@@ -32,12 +48,12 @@ export class CurrentWorkDayComponent implements OnInit {
     const sub = timer$.subscribe((sec) => {
       this.progressbarValue = (sec * 100) / seconds;
       this.curSec = sec;
-
       if (this.curSec === seconds) {
         sub.unsubscribe();
       }
     });
   }
+
   setWork() {
     this.state = this.workState;
     this.service
@@ -46,10 +62,11 @@ export class CurrentWorkDayComponent implements OnInit {
         employeeState: this.workState,
       })
       .subscribe();
-      this.service
+    this.service
       .getEmployeeStateById(this.selectedId)
       .subscribe((x) => (this.stateTime = x.date.split('T')[1].substr(0, 5)));
   }
+
   setRest() {
     this.state = this.restState;
     this.service
@@ -62,17 +79,51 @@ export class CurrentWorkDayComponent implements OnInit {
       .getEmployeeStateById(this.selectedId)
       .subscribe((x) => (this.stateTime = x.date.split('T')[1].substr(0, 5)));
   }
-  constructor(
-    public dialog: MatDialog,
-    private service: TaskTimeService,
-    private route: ActivatedRoute,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+
+  disabledWork: boolean = false;
+  disabledRest: boolean = false;
+  onStartWork() {
+    this.disabledWork = true;
+    this.disabledRest = false;
+    this.showTime.workTimes.push(
+      Math.floor(this.taskStatus.unitIndex / 60) +
+        ':' +
+        (this.taskStatus.unitIndex % 60) +
+        '-w'
+    );
+    this.taskStatus.setSectionIndex();
+    const unitInfo = {
+      color: EunitSectionColor.GREEN,
+    } as IUnitInfo;
+    this.taskStatus.unitInfo = unitInfo;
+    document.getElementById('task1')?.click();
+  }
+
+  onStartRest() {
+    this.disabledRest = true;
+    this.disabledWork = false;
+    this.showTime.workTimes.push(
+      Math.floor(this.taskStatus.unitIndex / 60) +
+        ':' +
+        (this.taskStatus.unitIndex % 60) +
+        '-r'
+    );
+    this.taskStatus.setSectionIndex();
+    const unitInfo = {
+      color: EunitSectionColor.RED,
+    } as IUnitInfo;
+    this.taskStatus.unitInfo = unitInfo;
+    document.getElementById('task2')?.click();
+  }
 
   ngOnInit(): void {
+    const unitInfo = {
+      color: EunitSectionColor.GRAY,
+    } as IUnitInfo;
+    this.taskStatus.unitInfo = unitInfo;
     this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
     this.service.getEmployeeStateById(this.selectedId).subscribe((x) => {
-      this.state = x.employeeState = "finish" ? "rest":"work";
+      this.state = x.employeeState = 'finish' ? 'rest' : 'work';
       this.stateTime = x.date.split('T')[1].substr(0, 5);
     });
     this.service.getEmployeeById(this.selectedId).subscribe((x) => {

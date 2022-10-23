@@ -20,6 +20,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import { AdminRestandworkPanelComponent } from './components/admin-restandwork-panel/admin-restandwork-panel.component';
+import { UserProgressBarComponent } from './components/user-progress-bar/user-progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AdminRestandworkPanelComponent } from './components/admin-restandwork-p
     DialogLeavingWorkComponent,
     AdminPanelComponent,
     AdminRestandworkPanelComponent,
+    UserProgressBarComponent,
   ],
   imports: [
     MatSelectModule,
@@ -48,6 +50,7 @@ import { AdminRestandworkPanelComponent } from './components/admin-restandwork-p
     ReactiveFormsModule
   ],
   providers: [
+    UserProgressBarComponent,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} }
   ],

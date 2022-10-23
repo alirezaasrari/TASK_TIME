@@ -1,33 +1,45 @@
 <div class="d-flex flex-column">
-
-    <div class="d-flex flex-row justify-content-center">
-        
+  <div class="d-flex flex-row justify-content-center"></div>
+  <div class="user-name d-flex flex-row justify-content-end iransans p-4">
+    {{ employeeName$[0] | async }}
+  </div>
+  <div class="container-timer">
+    <div
+      class="d-flex flex-row justify-content-center align-items-center iransans"
+    >
+      <span class="work-time ms-3">{{ time }}</span>
+      <button
+        [disabled]="disabledWork"
+        (click)="onStartWork()"
+        class="work iransans ms-3"
+        mat-stroked-button
+      >
+        در حال کار
+      </button>
+      <button
+        [disabled]="disabledRest"
+        (click)="onStartRest()"
+        class="rest iransans ms-3"
+        mat-stroked-button
+      >
+        استراحت
+      </button>
+      <span class="rest-time ms-3">{{ time }}</span>
     </div>
-    <div class="user-name d-flex flex-row justify-content-end iransans p-4">{{employeeName$[0]|async}}</div>
-    <div class="container-timer">
-        <div class="d-flex flex-row justify-content-center align-items-center iransans">
-            <span class="work-time ms-3">02:25</span>
-            <button (click)="setWork()" class="work iransans ms-3" mat-stroked-button>در حال کار</button>
-            <button (click)="setRest()" class="rest iransans ms-3" mat-stroked-button>استراحت</button>
-            <span class="rest-time ms-3">00:18</span>
-        </div>
 
-        <div class="time-bar-container d-flex flex-column justify-content-end ltr align-items-center iransans mt-5">
-            <div class="timebar d-flex flex-row ">
-                <span class="col d-flex flex-row justify-content-start">24:00</span>
-                <span class="col d-flex flex-row justify-content-end">00:00</span>
-            </div>
-            <div class="d-flex flex-row align-items-end ltr bar">
-                <div class="point-fill"></div>
-                <mat-progress-bar class="progress mt-5 d-flex" mode="determinate" [value]="progressbarValue" dir="ltr">
-
-                </mat-progress-bar>
-                <div class="point-empty"></div>
-            </div>
-        </div>
+    <div
+      class="time-bar-container d-flex flex-column justify-content-end align-items-center iransans mt-5"
+    >
+      <div class="timebar d-flex flex-row">
+        <span class="d-flex flex-row w-100">{{ time }}</span>
+      </div>
+      <app-user-progress-bar></app-user-progress-bar>
     </div>
-    <div style="text-align: center;">{{state}} in {{stateTime}}</div>
-    <footer class="rtl d-flex flex-row justify-content-center">
-        <button (click)="onOpenDialog()" class=" iransans leave" mat-raised-button>دارم میرم</button>
-    </footer>
+  </div>
+  <div style="text-align: center">{{ state }} in {{ stateTime }}</div>
+  <footer class="rtl d-flex flex-row justify-content-center">
+    <button (click)="onOpenDialog()" class="iransans leave" mat-raised-button>
+      دارم میرم
+    </button>
+  </footer>
 </div>

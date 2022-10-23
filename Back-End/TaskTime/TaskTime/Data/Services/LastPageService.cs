@@ -31,7 +31,7 @@ namespace TaskTime.Data.Services
 
         public void DeleteEmployeeLastPageData(int id)
         {
-            var lastpage = _context.LastPages.FirstOrDefault(n => n.EmployeeId == id);
+            var lastpage = _context.LastPages.FirstOrDefault(n => n.Id == id);
             if (lastpage != null)
             {
                 _context.LastPages.Remove(lastpage);

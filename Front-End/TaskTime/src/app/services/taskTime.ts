@@ -1,7 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { IEmployeeDetail, IEmployeeStateDetail, IEmployeeStateDetailForUpdate, IGetAllLastPages, IGetAllSecondPages, IPostEmployee, IPostLastPageData, IPostSecondPageData } from '../interfaces/elements';
+import {
+  IEmployeeDetail,
+  IEmployeeStateDetail,
+  IEmployeeStateDetailForUpdate,
+  IEmployeeStates,
+  IGetAllLastPages,
+  IGetAllSecondPages,
+  IPostEmployee,
+  IPostLastPageData,
+  IPostSecondPageData,
+} from '../interfaces/elements';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +28,9 @@ export class TaskTimeService {
   }
 
   getAllEmployee(): Observable<IEmployeeDetail[]> {
-    return this.http.get<IEmployeeDetail[]>(this.taskTimeUrl + '/Employee/get-all-employee');
+    return this.http.get<IEmployeeDetail[]>(
+      this.taskTimeUrl + '/Employee/get-all-employee'
+    );
   }
 
   deleteEmployee(id: number | string) {
@@ -62,6 +74,12 @@ export class TaskTimeService {
     );
   }
 
+  getAllEmployeeStates(): Observable<IEmployeeStates[]> {
+    return this.http.get<IEmployeeStates[]>(
+      this.taskTimeUrl + '/State/get-all-states'
+    );
+  }
+
   getEmployeeStateById(id: number): Observable<IEmployeeStateDetail> {
     return this.http.get<IEmployeeStateDetail>(
       this.taskTimeUrl + `/State/get-employee-state-by-id/${id}`
@@ -69,14 +87,17 @@ export class TaskTimeService {
   }
 
   postemployeestate(data: IEmployeeStateDetailForUpdate) {
-    return this.http.post(
-      this.taskTimeUrl + '/State/add-employee-state',
-      data
-    );
+    return this.http.post(this.taskTimeUrl + '/State/add-employee-state', data);
   }
 
-  updateEmployeeState(id:number|string, data:IEmployeeStateDetailForUpdate){
-    return this.http.put(this.taskTimeUrl + `/State/update-employee-state/${id}`, data)
+  updateEmployeeState(
+    id: number | string,
+    data: IEmployeeStateDetailForUpdate
+  ) {
+    return this.http.put(
+      this.taskTimeUrl + `/State/update-employee-state/${id}`,
+      data
+    );
   }
 
   // lastpage services
@@ -94,7 +115,9 @@ export class TaskTimeService {
   }
 
   getAllLastPages(): Observable<IGetAllLastPages[]> {
-    return this.http.get<IGetAllLastPages[]>(this.taskTimeUrl + '/LastPage/get-all-lastpages');
+    return this.http.get<IGetAllLastPages[]>(
+      this.taskTimeUrl + '/LastPage/get-all-lastpages'
+    );
   }
 
   getLastPageById(id: number): Observable<any> {
