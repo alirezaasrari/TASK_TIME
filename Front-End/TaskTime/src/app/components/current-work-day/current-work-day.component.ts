@@ -27,10 +27,8 @@ export class CurrentWorkDayComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
   startWork: EventEmitter<IUnitInfo> = new EventEmitter<IUnitInfo>();
-  progressbarValue = 0;
   selectedId: number;
   id: number;
-  curSec: number = 0;
   rest: boolean = false;
   d = new Date();
   H = this.d.getHours();
@@ -42,19 +40,10 @@ export class CurrentWorkDayComponent implements OnInit {
   workState: string = 'work';
   restState: string = 'rest';
   finishState: string = 'finish';
+  disabledWork: boolean = false;
+  disabledRest: boolean = false;
 
-  startTimer(seconds: number) {
-    const timer$ = interval(1000);
-    const sub = timer$.subscribe((sec) => {
-      this.progressbarValue = (sec * 100) / seconds;
-      this.curSec = sec;
-      if (this.curSec === seconds) {
-        sub.unsubscribe();
-      }
-    });
-  }
-
-  setWork() {
+  onStartWork() {
     this.state = this.workState;
     this.service
       .updateEmployeeState(this.selectedId, {
@@ -65,24 +54,6 @@ export class CurrentWorkDayComponent implements OnInit {
     this.service
       .getEmployeeStateById(this.selectedId)
       .subscribe((x) => (this.stateTime = x.date.split('T')[1].substr(0, 5)));
-  }
-
-  setRest() {
-    this.state = this.restState;
-    this.service
-      .updateEmployeeState(this.selectedId, {
-        employeeId: this.selectedId,
-        employeeState: this.restState,
-      })
-      .subscribe();
-    this.service
-      .getEmployeeStateById(this.selectedId)
-      .subscribe((x) => (this.stateTime = x.date.split('T')[1].substr(0, 5)));
-  }
-
-  disabledWork: boolean = false;
-  disabledRest: boolean = false;
-  onStartWork() {
     this.disabledWork = true;
     this.disabledRest = false;
     this.showTime.workTimes.push(
@@ -97,9 +68,19 @@ export class CurrentWorkDayComponent implements OnInit {
     } as IUnitInfo;
     this.taskStatus.unitInfo = unitInfo;
     document.getElementById('task1')?.click();
-  }
+  } 
 
   onStartRest() {
+    this.state = this.restState;
+    this.service
+      .updateEmployeeState(this.selectedId, {
+        employeeId: this.selectedId,
+        employeeState: this.restState,
+      })
+      .subscribe();
+    this.service
+      .getEmployeeStateById(this.selectedId)
+      .subscribe((x) => (this.stateTime = x.date.split('T')[1].substr(0, 5)));
     this.disabledRest = true;
     this.disabledWork = false;
     this.showTime.workTimes.push(

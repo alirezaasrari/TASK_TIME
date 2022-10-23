@@ -9,3 +9,4 @@ export class ShowTimeService {
   green: any[] = [];
   red: any[] = [];
 }
+ 
