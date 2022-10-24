@@ -24,7 +24,7 @@ namespace TaskTime.Data.Services
         public List<State> GetAllStates() => _context.States.ToList();
         public State GetEmployeeStateById(int employeeId)
         {
-            var employeestate = _context.States.FirstOrDefault(x => x.EmployeeId == employeeId);
+            var employeestate = _context.States.Where(x => x.EmployeeId == employeeId).OrderByDescending(x=>x.Date).FirstOrDefault();
             return employeestate;
         }
 
