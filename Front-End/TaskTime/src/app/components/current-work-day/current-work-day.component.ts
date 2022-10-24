@@ -115,7 +115,7 @@ export class CurrentWorkDayComponent implements OnInit {
   public onOpenDialog() {
     this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
     this.service
-      .updateEmployeeState(this.selectedId, {
+      .postemployeestate({
         employeeId: this.selectedId,
         employeeState: this.finishState,
       })
