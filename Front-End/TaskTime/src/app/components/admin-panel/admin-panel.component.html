@@ -192,4 +192,65 @@
             </tr>
           </tbody>
         </table>
+        <br>
+        <br>
+        <div class="text-center bold">
+          <p>ای دی کارمند را سرچ و نام او را مشاهده کنید</p>
+    <form>
+      <input type="number" style="width: 400px; height: 32px; margin: 10px;" name="id" [(ngModel)]="searchCase3"
+       placeholder="ای دی را وارد و اطلاعات را دریافت کنید">
+       <button mat-raised-button color="primary" (click)="search3(searchCase3)">جستجو</button>
+    </form>
+    <table class="table table-striped">
+      <thead>
+        <th class="text-center bold">نام و نام خانوادگی</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-center bold">{{Employee.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="text-center bold">
+      <p>اطلاعات کار و استراحت هر کارمند بر حسب ای دی در جدول پایین</p>
+  <form>
+  <input type="number" style="width: 400px; height: 32px; margin: 10px;" name="id" [(ngModel)]="searchCase4"
+   placeholder="ای دی را وارد و اطلاعات را دریافت کنید">
+   <button mat-raised-button color="primary" (click)="search5(searchCase4)">جستجو</button>
+  </form>
+  <table class="table table-striped">
+  <thead>
+    <th class="text-center bold">حالت</th>
+    <th class="text-center bold">ای دی کارمند</th>
+    <th class="text-center bold">تاریخ</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center bold">{{employeestate.employeeState}}</td>
+      <td class="text-center bold">{{employeestate.employeeId}}</td>
+      <td class="text-center bold">{{employeestate.date}}</td>
+    </tr>
+  </tbody>
+  </table>
+  </div>
+        <br>
+        <h2 class="text-center"> لیست زمانهای کار و استراحت کارمندان </h2>
+        <table class="table table-striped">
+            <thead>
+                <th class="text-center bold">ای دی</th>
+                <th class="text-center bold">تاریخ و زمان</th>
+                <th class="text-center bold">ای دی کارمند</th>
+                <th class="text-center bold">حالت</th>
+              </thead>
+          <tbody>
+            <tr *ngFor="let item of  employeeStateList$ | async">
+              <td class="text-center bold">{{ item.id }}</td>
+              <td class="text-center bold">{{ item.date }}</td>
+              <td class="text-center bold">{{ item.employeeId }}</td>
+              <td class="text-center bold">{{ item.employeeState }}</td>
+            </tr>
+          </tbody>
+        </table>
         </div>

@@ -87,7 +87,7 @@ export interface IEmployeeStates{
     date: string,
     employeeState: string,
     employeeId: number,
-    employee: null
+    employee?: null
 }
 
 export interface Elements {

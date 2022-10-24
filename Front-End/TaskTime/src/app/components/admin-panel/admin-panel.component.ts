@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { IEmployee, IEmployeeُSecondPage, ILastPage } from 'src/app/interfaces/elements';
+import { IEmployee, IEmployeeStates, IEmployeeُSecondPage, ILastPage } from 'src/app/interfaces/elements';
 import { TaskTimeService } from 'src/app/services/taskTime';
 
 @Component({
@@ -18,11 +18,12 @@ export class AdminPanelComponent implements OnInit {
   employeeList$: Observable<any[]>;
   secondPageEmployeeList$: Observable<any[]>;
   lastPageEmployeeList$: Observable<any[]>;
+  employeeStateList$: Observable<IEmployeeStates[]>;
   searchCase:number = 0;
   searchCase2:number = 0;
   searchCase3:number = 0;
   searchCase4:number = 0;
-  name: string = '';
+  name: string = ''; 
 
   addEmployee(name:string){
     this.service.postEmployee({name:name}).subscribe((res: any) => {
@@ -109,10 +110,27 @@ export class AdminPanelComponent implements OnInit {
        });
     return lastpage;
   }
+
+  employeestate: IEmployeeStates = {
+    date:"",
+    employeeId:0,
+    employeeState:"",
+    id:0
+  }
+  search5(id: number) {
+    var employeestate = this.service.getEmployeeStateById(id).subscribe((res: any) =>
+      {
+       this.employeestate.date = res.date,
+       this.employeestate.employeeId = res.employeeId,
+       this.employeestate.employeeState = res.employeeState
+       });
+    return employeestate;
+  }
   ngOnInit(): void {
     this.employeeList$ = this.service.getAllEmployee();
     this.secondPageEmployeeList$ = this.service.getAllSecondPages()
     this.lastPageEmployeeList$ = this.service.getAllLastPages();
+    this.employeeStateList$ = this.service.getAllEmployeeStates();
   }
 
 }
