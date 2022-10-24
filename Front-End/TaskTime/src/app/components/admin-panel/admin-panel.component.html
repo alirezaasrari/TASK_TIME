@@ -243,6 +243,7 @@
                 <th class="text-center bold">تاریخ و زمان</th>
                 <th class="text-center bold">ای دی کارمند</th>
                 <th class="text-center bold">حالت</th>
+                <th class="text-center bold">حذف</th>
               </thead>
           <tbody>
             <tr *ngFor="let item of  employeeStateList$ | async">
@@ -250,6 +251,17 @@
               <td class="text-center bold">{{ item.date }}</td>
               <td class="text-center bold">{{ item.employeeId }}</td>
               <td class="text-center bold">{{ item.employeeState }}</td>
+              <td class="text-center">
+                <button 
+                  (click)="fireDeleteEmployeeState(item.id)"
+                  id="delete{{ item.id }}"
+                  mat-stroked-button
+                  color="warn"
+                  class="bold"
+                >
+                   حذف از لیست اطلاعات کار و استراحت کارمند
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

@@ -100,6 +100,12 @@ export class TaskTimeService {
     );
   }
 
+  deleteEmployeeState(id: number | string) {
+    return this.http.delete(
+      this.taskTimeUrl + `/State/delete-employee-stae-data?id=${id}`
+    );
+  }
+
   // lastpage services
   postlastpage(data: IPostLastPageData) {
     return this.http.post(

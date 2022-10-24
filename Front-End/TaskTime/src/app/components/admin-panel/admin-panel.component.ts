@@ -62,6 +62,13 @@ export class AdminPanelComponent implements OnInit {
     this.openSnackBar('اطلاعات صفحه اخر کارمند حذف گردید');
   }
 
+  fireDeleteEmployeeState(id:number):void{
+    this.service.deleteEmployeeState(id).subscribe((res: any) => {
+      this.ngOnInit();
+    });
+    this.openSnackBar('اخرین اطلاعات حالت کار و استراحت کارمند حذف گردید');
+  }
+
   Employee: IEmployee = {
    name:''
   };
