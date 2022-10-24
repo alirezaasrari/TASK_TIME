@@ -1,4 +1,14 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ComponentFactoryResolver,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { IUnitInfo } from 'src/app/interfaces/elements';
 import { ShowTimeService } from 'src/app/services/show-time.service';
 import { TaskStatusService } from 'src/app/services/task-status.service';
@@ -8,11 +18,12 @@ import { UnitComponent } from './unit/unit.component';
   selector: '[app-section]',
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.css'],
-
 })
-export class SectionComponent implements OnInit, AfterViewInit, AfterViewChecked, AfterContentInit {
+export class SectionComponent
+  implements OnInit, AfterViewInit, AfterViewChecked, AfterContentInit
+{
   unitInfo!: IUnitInfo;
-  interval: any
+  interval: any;
   d = new Date();
   H = this.d.getHours() * 60;
   M = this.d.getMinutes();
@@ -21,30 +32,32 @@ export class SectionComponent implements OnInit, AfterViewInit, AfterViewChecked
   min = this.taskStatus.unitIndex;
   h = this.min / 60;
   m = this.min % 60;
-  constructor(private cdRef: ChangeDetectorRef, private resolver: ComponentFactoryResolver, private taskStatus: TaskStatusService,
-    public showTime: ShowTimeService) { }
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private resolver: ComponentFactoryResolver,
+    private taskStatus: TaskStatusService,
+    public showTime: ShowTimeService
+  ) {}
 
-  @ViewChild("unitsection", { read: ViewContainerRef })
+  @ViewChild('unitsection', { read: ViewContainerRef })
   unitsectioncontainer!: ViewContainerRef;
 
   get localStorage() {
     return localStorage;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     if (this.taskStatus.sectionIndex == 0) {
-      for(let i=0; i<this.time; i++){
-       this.createComponent();
-       this.taskStatus.setUnitIndex();
-    }
+      for (let i = 0; i < this.time; i++) {
+        this.createComponent();
+        this.taskStatus.setUnitIndex();
+      }
     }
 
     clearInterval(this.taskStatus.timer);
     this.taskStatus.timer = setInterval(() => {
-
       this.createComponent();
       this.taskStatus.setUnitIndex();
       this.getTotalWork();
@@ -58,12 +71,8 @@ export class SectionComponent implements OnInit, AfterViewInit, AfterViewChecked
 
     this.cdRef.detectChanges();
   }
-  ngAfterViewChecked(): void {
-
-  }
-  ngAfterContentInit(): void {
-
-  }
+  ngAfterViewChecked(): void {}
+  ngAfterContentInit(): void {}
 
   createComponent() {
     const factory = this.resolver.resolveComponentFactory(UnitComponent);
@@ -71,18 +80,17 @@ export class SectionComponent implements OnInit, AfterViewInit, AfterViewChecked
   }
 
   getTotalWork() {
-    let u = this.taskStatus.unitIndex
+    let u = this.taskStatus.unitIndex;
 
     if (this.taskStatus.disabledWork === true) {
-      this.showTime.green.push(u)
+      this.showTime.green.push(u);
     }
   }
   getTotalRest() {
     let u = this.taskStatus.unitIndex;
 
     if (this.taskStatus.disabledRest === true) {
-      this.showTime.red.push(u)
+      this.showTime.red.push(u);
     }
   }
-
 }

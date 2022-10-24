@@ -21,7 +21,7 @@ export class UnitComponent implements OnInit {
   constructor(public taskStatus : TaskStatusService ,public showTime : ShowTimeService) { }
 
   ngOnInit(): void {
-    //this.color=this.taskStatus.unitInfo.color;
+    this.color=this.taskStatus.unitInfo.color;
   }
 
 }
