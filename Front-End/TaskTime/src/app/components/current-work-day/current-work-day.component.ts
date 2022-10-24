@@ -46,7 +46,7 @@ export class CurrentWorkDayComponent implements OnInit {
   onStartWork() {
     this.state = this.workState;
     this.service
-      .updateEmployeeState(this.selectedId, {
+      .postemployeestate({ 
         employeeId: this.selectedId,
         employeeState: this.workState,
       })
@@ -73,7 +73,7 @@ export class CurrentWorkDayComponent implements OnInit {
   onStartRest() {
     this.state = this.restState;
     this.service
-      .updateEmployeeState(this.selectedId, {
+      .postemployeestate({
         employeeId: this.selectedId,
         employeeState: this.restState,
       })
