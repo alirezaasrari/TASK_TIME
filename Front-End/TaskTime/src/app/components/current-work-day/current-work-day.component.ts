@@ -51,9 +51,9 @@ export class CurrentWorkDayComponent implements OnInit {
         employeeState: this.workState,
       })
       .subscribe();
-    this.service
-      .getEmployeeStateById(this.selectedId)
-      .subscribe((x) => (this.stateTime = x.date.split('T')[1].substr(0, 5)));
+    // this.service
+    //   .getEmployeeStateById(this.selectedId)
+    //   .subscribe((x) => (this.stateTime = x.date.split('T')[1].substr(0, 5)));
     this.disabledWork = true;
     this.disabledRest = false;
     this.showTime.workTimes.push(
