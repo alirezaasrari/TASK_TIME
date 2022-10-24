@@ -11,6 +11,8 @@ export class TaskStatusService {
   timer: any = 0;
   unitIndex: number = 0;
   sectionIndex: number = 0;
+  disabledWork: boolean = false;
+  disabledRest: boolean = false;
 
   setUnitIndex() {
     if (this.unitIndex <= 1440) {

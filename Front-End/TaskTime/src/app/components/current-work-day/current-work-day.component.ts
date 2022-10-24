@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { interval, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { EunitSectionColor, IUnitInfo } from 'src/app/interfaces/elements';
 import { ShowTimeService } from 'src/app/services/show-time.service';
 import { TaskStatusService } from 'src/app/services/task-status.service';
@@ -128,3 +128,4 @@ export class CurrentWorkDayComponent implements OnInit {
     });
   }
 }
+
