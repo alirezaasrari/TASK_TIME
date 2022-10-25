@@ -26,7 +26,7 @@ export class AdminRestandworkPanelComponent implements OnInit {
     const unitInfo = {
       color: EunitSectionColor.GRAY,
     } as IUnitInfo;
-    this.service.getAllSecondPages().subscribe((x) => {
+    this.service.getAllSecondPages().subscribe((x) => { 
       if (x.length > 0)
         x.forEach((element) => {
           of(element).subscribe((p) => {

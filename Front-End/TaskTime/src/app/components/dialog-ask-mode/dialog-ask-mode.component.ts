@@ -51,16 +51,16 @@ export class DialogAskModeComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-    this.snackbar.open(message, 'undo', {
+    this.snackbar.open(message, '', {
       duration: 3000,
       panelClass: ['green-snackbar'],
-      horizontalPosition: 'left',
+      horizontalPosition: 'right',
       verticalPosition: 'top',
     });
   }
 
   openSnackBar2(message: string) {
-    this.snackbar.open(message, 'undo', {
+    this.snackbar.open(message, '', {
       duration: 3000,
       panelClass: ['red-snackbar'],
       horizontalPosition: 'right',

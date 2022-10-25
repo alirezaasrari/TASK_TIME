@@ -21,11 +21,11 @@ export class DialogLeavingWorkComponent implements OnInit {
   employeeId: number;
   id:number;
   openSnackBar(message: string) {
-    this.snackbar.open(message, 'undo', {
+    this.snackbar.open(message, '', {
       duration: 3000,
       panelClass: ['green-snackbar'],
       horizontalPosition: 'right',
-      verticalPosition: 'bottom'
+      verticalPosition: 'top'
     });
   }
   onLeaving(employeeId:number, description: string, rating: number) {

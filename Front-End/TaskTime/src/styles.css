@@ -23,16 +23,26 @@ body { margin: 0; font-family: "IRANSans", "Helvetica Neue", sans-serif; }
  }
 
  .green-snackbar{
-    background: greenyellow;
-    color: black;
+    background: gray;
+    color: white;
+    font-family:  "IRANSans", "Helvetica Neue", "sans-serif"; 
+    font-weight: bolder;
  }
 
  .blue-snackbar{
-   background: blue;
-   color: white;
+   background: gray;
+    color: white;
+    font-family:  "IRANSans", "Helvetica Neue", "sans-serif"; 
+    font-weight: bolder;
  }
 
  .red-snackbar{
-    background: yellow;
-    color: green;
+   background: gray;
+   color: white;
+   font-family:  "IRANSans", "Helvetica Neue", "sans-serif";
+   font-weight: bolder;
+ }
+
+ .mat-simple-snackbar {
+   font-family: "IRANSans", "Helvetica Neue", "sans-serif";
  }
