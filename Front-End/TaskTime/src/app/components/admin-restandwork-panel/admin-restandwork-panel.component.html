@@ -9,7 +9,7 @@
     <div class="col d-flex flex-row align-items-center">
       <span class="ms-2">{{ item.name }}</span>
       <label class="switch">
-        <input type="checkbox" [checked]="item.check" />
+        <input type="checkbox" [(ngModel)]="item.check" onchange="fireChangeState()"/>
 
         <span class="slider round"></span>
       </label>

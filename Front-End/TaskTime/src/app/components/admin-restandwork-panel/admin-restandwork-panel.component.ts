@@ -21,7 +21,9 @@ export class AdminRestandworkPanelComponent implements OnInit {
   constructor(private service: TaskTimeService,private userProgressBarComponent: UserProgressBarComponent) {}
   secondPageEmployeeList: ISecondPageEmployeeDetail[] = [];
   check:boolean;
- 
+  fireChangeState(){
+   // this.service.postemployeestate(this.id,{employeeId:this.id,employeeState:this.check}).subscribe()
+  }
   ngOnInit(): void {
     const unitInfo = {
       color: EunitSectionColor.GRAY,
