@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import {
   EunitSectionColor,
   IEmployeeDetail,
+  IEmployeeStateDetail,
   ISecondPageEmployeeDetail,
   IUnitInfo,
 } from 'src/app/interfaces/elements';
@@ -18,35 +19,25 @@ import { UserProgressBarComponent } from '../user-progress-bar/user-progress-bar
 })
 export class AdminRestandworkPanelComponent implements OnInit {
   constructor(private service: TaskTimeService,private userProgressBarComponent: UserProgressBarComponent) {}
-  employeeList$: Observable<IEmployeeDetail[]>;
   secondPageEmployeeList: ISecondPageEmployeeDetail[] = [];
-  check:boolean = false;
+  check:boolean;
  
   ngOnInit(): void {
     const unitInfo = {
       color: EunitSectionColor.GRAY,
     } as IUnitInfo;
-    this.service.getAllSecondPages().subscribe((x) => { 
-      if (x.length > 0)
-        x.forEach((element) => {
-          of(element).subscribe((p) => {
-            setTimeout(() => {
-              this.service
-                .getEmployeeById(p.employeeId)
-                .subscribe((y: IEmployeeDetail) => {
-                  if (y != null)
-                    this.secondPageEmployeeList.push({
-                      datetime: element.dateTime,
-                      description: element.description,
-                      emotion: element.emotion,
-                      employeeid: y.id,
-                      id: y.id,
-                      name: y.name,
-                    });
+    this.service.getAllEmployee().subscribe((x:IEmployeeDetail[]) => {
+           x.forEach((element) => {
+            of(element).subscribe((p) => {
+              this.service.getEmployeeStateById(p.id).subscribe((f:IEmployeeStateDetail) => {
+                this.secondPageEmployeeList.push({
+                  datetime:f.date,
+                  name:element.name,
+                  check : f.employeeState == "work"? this.check = true : this.check = false
                 });
-            }, 100);
-          });
-        });
-    });
+              })
+            })
+           })
+    })
   }
 }

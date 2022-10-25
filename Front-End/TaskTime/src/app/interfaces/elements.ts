@@ -27,11 +27,12 @@ export interface IEmployeeDetail{
 
 export interface ISecondPageEmployeeDetail{
     name?: string;
-    id:number,
+    id?:number,
     datetime:string
-    emotion: string,
-    description:string,
-    employeeid:number
+    emotion?: string,
+    description?:string,
+    employeeid?:number,
+    check:boolean
 }
 
 export interface IPostEmployee{
