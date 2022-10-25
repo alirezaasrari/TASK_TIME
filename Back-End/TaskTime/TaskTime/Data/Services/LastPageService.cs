@@ -25,7 +25,7 @@ namespace TaskTime.Data.Services
         public List<LastPage> GetAllLastPages() => _context.LastPages.ToList();
         public LastPage GetLastPageById(int LastPageId)
         {
-            var _lastpage = _context.LastPages.FirstOrDefault(x => x.EmployeeId == LastPageId);
+            var _lastpage = _context.LastPages.FirstOrDefault(x => x.Id == LastPageId);
             return _lastpage;
         }
 
