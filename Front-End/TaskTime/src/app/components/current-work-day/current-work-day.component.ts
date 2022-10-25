@@ -101,12 +101,6 @@ export class CurrentWorkDayComponent implements OnInit {
     } as IUnitInfo;
     this.taskStatus.unitInfo = unitInfo;
     this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
-    this.service.getEmployeeStateById(this.selectedId).subscribe((x) => {
-      this.state = x.employeeState = 'finish' ? 'rest' : 'work';
-      of(this.state).subscribe((x:string) => {this.service.postemployeestate({employeeState:this.state,
-      employeeId:this.selectedId}).subscribe()});
-      this.stateTime = x.date.split('T')[1].substr(0, 5);
-    });
     this.service.getEmployeeById(this.selectedId).subscribe((x) => {
       this.employeeName$.push(of(x.name));
     });
