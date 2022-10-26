@@ -125,6 +125,8 @@ ngAfterViewInit(){
   }
 
   public onOpenDialog() {
+    clearInterval(this.addworktime);
+    clearInterval(this.addresttime);
     this.selectedId = Number(this.route.snapshot.paramMap.get('id'));
     this.service
       .postemployeestate({
