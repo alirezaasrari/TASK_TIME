@@ -2,7 +2,13 @@ import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { EunitSectionColor, IEmployeeDetail, IEmployeeStateDetail, ISecondPageEmployeeDetail, IUnitInfo } from 'src/app/interfaces/elements';
+import {
+  EunitSectionColor,
+  IEmployeeDetail,
+  IEmployeeStateDetail,
+  ISecondPageEmployeeDetail,
+  IUnitInfo,
+} from 'src/app/interfaces/elements';
 import { ShowTimeService } from 'src/app/services/show-time.service';
 import { TaskStatusService } from 'src/app/services/task-status.service';
 import { TaskTimeService } from 'src/app/services/taskTime';
@@ -18,7 +24,7 @@ import { DialogLeavingWorkComponent } from './dialog-leaving-work/dialog-leaving
 })
 export class CurrentWorkDayComponent implements OnInit {
   constructor(
-    public dialog: MatDialog, 
+    public dialog: MatDialog,
     private service: TaskTimeService,
     private route: ActivatedRoute,
     public showTime: ShowTimeService,
@@ -27,7 +33,7 @@ export class CurrentWorkDayComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
   secondPageEmployeeList: ISecondPageEmployeeDetail[] = [];
-  check:boolean;
+  check: boolean;
   startWork: EventEmitter<IUnitInfo> = new EventEmitter<IUnitInfo>();
   selectedId: number;
   id: number;
@@ -48,18 +54,18 @@ export class CurrentWorkDayComponent implements OnInit {
   finishState: string = 'finish';
   disabledWork: boolean = false;
   disabledRest: boolean = false;
-  addworktime:any;
-  addresttime:any;
+  addworktime: any;
+  addresttime: any;
 
   onStartWork() {
     this.state = this.workState;
     this.service
-      .postemployeestate({ 
+      .postemployeestate({
         employeeId: this.selectedId,
         employeeState: this.workState,
       })
       .subscribe();
-      
+
     this.disabledWork = true;
     this.disabledRest = false;
     this.showTime.workTimes.push(
@@ -76,9 +82,9 @@ export class CurrentWorkDayComponent implements OnInit {
     document.getElementById('task1')?.click();
     clearInterval(this.addresttime);
     this.addworktime = setInterval(() => {
-    this.worktime++
-    },1000)
-  } 
+      this.worktime++;
+    }, 1000);
+  }
 
   onStartRest() {
     this.state = this.restState;
@@ -107,16 +113,15 @@ export class CurrentWorkDayComponent implements OnInit {
     document.getElementById('task2')?.click();
     clearInterval(this.addworktime);
     this.addresttime = setInterval(() => {
-        this.resttime++
-        },1000);
+      this.resttime++;
+    }, 1000);
   }
-ngAfterViewInit(){
-  this.addworktime = setInterval(() => {
-  this.worktime++
-  },1000)
-}
+  ngAfterViewInit() {
+    this.addworktime = setInterval(() => {
+      this.worktime++;
+    }, 1000);
+  }
   ngOnInit(): void {
-    
     const unitInfo = {
       color: EunitSectionColor.GRAY,
     } as IUnitInfo;
@@ -127,19 +132,24 @@ ngAfterViewInit(){
     });
 
     // admin part
-    this.service.getAllEmployee().subscribe((x:IEmployeeDetail[]) => {
+    this.service.getAllEmployee().subscribe((x: IEmployeeDetail[]) => {
       x.forEach((element) => {
-       of(element).subscribe((p) => {
-         this.service.getEmployeeStateById(p.id).subscribe((f:IEmployeeStateDetail) => {
-           this.secondPageEmployeeList.push({
-             datetime:f.date,
-             name:element.name,
-             check : f.employeeState == "work"? this.check = true : this.check = false
-           });
-         })
-       })
-      })
-})
+        of(element).subscribe((p) => {
+          this.service
+            .getEmployeeStateById(p.id)
+            .subscribe((f: IEmployeeStateDetail) => {
+              this.secondPageEmployeeList.push({
+                datetime: f.date,
+                name: element.name,
+                check:
+                  f.employeeState == 'work'
+                    ? (this.check = true)
+                    : (this.check = false),
+              });
+            });
+        });
+      });
+    });
   }
 
   public onOpenDialog() {
@@ -160,4 +170,3 @@ ngAfterViewInit(){
     });
   }
 }
-
