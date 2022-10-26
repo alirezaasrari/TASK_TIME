@@ -7,6 +7,7 @@ import {
   ISecondPageEmployeeDetail,
   IUnitInfo,
 } from 'src/app/interfaces/elements';
+import { TaskStatusService } from 'src/app/services/task-status.service';
 import { TaskTimeService } from 'src/app/services/taskTime';
 import { SectionComponent } from '../user-progress-bar/section/section.component';
 import { UserProgressBarComponent } from '../user-progress-bar/user-progress-bar.component';
@@ -18,7 +19,9 @@ import { UserProgressBarComponent } from '../user-progress-bar/user-progress-bar
   providers: [SectionComponent],
 })
 export class AdminRestandworkPanelComponent implements OnInit {
-  constructor(private service: TaskTimeService,private userProgressBarComponent: UserProgressBarComponent) {}
+  constructor(private service: TaskTimeService,
+    private userProgressBarComponent: UserProgressBarComponent,
+    public taskStatus: TaskStatusService) {}
   secondPageEmployeeList: ISecondPageEmployeeDetail[] = [];
   check:boolean;
   fireChangeState(){
@@ -28,6 +31,7 @@ export class AdminRestandworkPanelComponent implements OnInit {
     const unitInfo = {
       color: EunitSectionColor.GRAY,
     } as IUnitInfo;
+    this.taskStatus.unitInfo = unitInfo;
     this.service.getAllEmployee().subscribe((x:IEmployeeDetail[]) => {
            x.forEach((element) => {
             of(element).subscribe((p) => {

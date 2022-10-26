@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { IEmployee, IEmployeeStates, IEmployeeُSecondPage, ILastPage } from 'src/app/interfaces/elements';
 import { TaskTimeService } from 'src/app/services/taskTime';
+import * as shamsi from 'shamsi-date-converter';
 
 @Component({
   selector: 'app-admin-panel',
@@ -15,6 +16,7 @@ export class AdminPanelComponent implements OnInit {
     private service: TaskTimeService,
     private snackbar: MatSnackBar
   ) { }
+  shamsi = require('shamsi-date-converter');
   employeeList$: Observable<any[]>;
   secondPageEmployeeList$: Observable<any[]>;
   lastPageEmployeeList$: Observable<any[]>;

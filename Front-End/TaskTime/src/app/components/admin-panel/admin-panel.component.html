@@ -89,6 +89,7 @@
         <table class="table table-striped">
           <thead>
             <th class="text-center bold">ای دی</th>
+            <th class="text-center bold">ساعت</th>
             <th class="text-center bold">تاریخ</th>
             <th class="text-center bold">ایموجی</th>
             <th class="text-center bold">توصیف حال</th>
@@ -98,7 +99,12 @@
           <tbody>
             <tr *ngFor="let item of  secondPageEmployeeList$ | async">
               <td class="text-center bold">{{ item.id }}</td>
-              <td class="text-center bold">{{ item.dateTime }}</td>
+              <td class="text-center bold">
+                {{ item.dateTime.split("T")[1].substr(0,5) }}
+              </td>
+              <td class="text-center bold">
+                {{ shamsi.gregorianToJalali(item.dateTime.split("T")[0]) }}
+              </td>
               <td class="text-center bold">{{ item.emotion }}</td>
               <td class="text-center bold">{{ item.description }}</td>
               <td class="text-center bold">{{ item.employeeId }}</td>
@@ -167,6 +173,7 @@
             <th class="text-center bold">ای دی</th>
             <th class="text-center bold">ستاره</th>
             <th class="text-center bold">توصیف حال</th>
+            <th class="text-center bold">ساعت</th>
             <th class="text-center bold">تاریخ</th>
             <th class="text-center bold"> ای دی کارمند</th>
             <th class="text-center bold">حذف</th>
@@ -176,7 +183,12 @@
               <td class="text-center bold">{{ item.id }}</td>
               <td class="text-center bold">{{ item.stars }}</td>
               <td class="text-center bold">{{ item.description }}</td>
-              <td class="text-center bold">{{ item.date }}</td>
+              <td class="text-center bold">
+                {{ item.date.split("T")[1].substr(0,5) }}
+              </td>
+              <td class="text-center bold">
+                {{ shamsi.gregorianToJalali(item.date.split("T")[0]) }}
+              </td>
               <td class="text-center bold">{{ item.employeeId }}</td>
               <td class="text-center">
                 <button 
@@ -240,7 +252,8 @@
         <table class="table table-striped">
             <thead>
                 <th class="text-center bold">ای دی</th>
-                <th class="text-center bold">تاریخ و زمان</th>
+                <th class="text-center bold">ساعت</th>
+                <th class="text-center bold">تاریخ</th>
                 <th class="text-center bold">ای دی کارمند</th>
                 <th class="text-center bold">حالت</th>
                 <th class="text-center bold">حذف</th>
@@ -248,7 +261,14 @@
           <tbody>
             <tr *ngFor="let item of  employeeStateList$ | async">
               <td class="text-center bold">{{ item.id }}</td>
-              <td class="text-center bold">{{ item.date }}</td>
+              <td class="text-center bold">
+                {{ item.date.split("T")[1].substr(0,5) }}
+              </td>
+              <td class="text-center bold">
+                {{
+                  shamsi.gregorianToJalali(item.date.split("T")[0])
+                   }}
+              </td>
               <td class="text-center bold">{{ item.employeeId }}</td>
               <td class="text-center bold">{{ item.employeeState }}</td>
               <td class="text-center">

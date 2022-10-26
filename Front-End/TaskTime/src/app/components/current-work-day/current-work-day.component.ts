@@ -18,7 +18,7 @@ import { DialogLeavingWorkComponent } from './dialog-leaving-work/dialog-leaving
 })
 export class CurrentWorkDayComponent implements OnInit {
   constructor(
-    public dialog: MatDialog,
+    public dialog: MatDialog, 
     private service: TaskTimeService,
     private route: ActivatedRoute,
     public showTime: ShowTimeService,
