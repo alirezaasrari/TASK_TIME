@@ -34,6 +34,10 @@ export class CurrentWorkDayComponent implements OnInit {
   H = this.d.getHours();
   M = this.d.getMinutes();
   time = this.H + ':' + this.M;
+  //worktime = '00' + ':' + '00';
+  worktime = 0;
+  //resttime = '00' + ':' + '00';
+  resttime = 0;
   employeeName$: Observable<string>[] = [];
   state: string;
   stateTime: string;
@@ -42,6 +46,8 @@ export class CurrentWorkDayComponent implements OnInit {
   finishState: string = 'finish';
   disabledWork: boolean = false;
   disabledRest: boolean = false;
+  addworktime:any;
+  addresttime:any;
 
   onStartWork() {
     this.state = this.workState;
@@ -66,6 +72,10 @@ export class CurrentWorkDayComponent implements OnInit {
     } as IUnitInfo;
     this.taskStatus.unitInfo = unitInfo;
     document.getElementById('task1')?.click();
+    clearInterval(this.addresttime);
+    this.addworktime = setInterval(() => {
+    this.worktime++
+    },1000)
   } 
 
   onStartRest() {
@@ -93,8 +103,16 @@ export class CurrentWorkDayComponent implements OnInit {
     } as IUnitInfo;
     this.taskStatus.unitInfo = unitInfo;
     document.getElementById('task2')?.click();
+    clearInterval(this.addworktime);
+    this.addresttime = setInterval(() => {
+        this.resttime++
+        },1000);
   }
-
+ngAfterViewInit(){
+  this.addworktime = setInterval(() => {
+  this.worktime++
+  },1000)
+}
   ngOnInit(): void {
     const unitInfo = {
       color: EunitSectionColor.GRAY,
