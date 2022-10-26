@@ -2,7 +2,7 @@ import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { EunitSectionColor, IUnitInfo } from 'src/app/interfaces/elements';
+import { EunitSectionColor, IEmployeeDetail, IEmployeeStateDetail, ISecondPageEmployeeDetail, IUnitInfo } from 'src/app/interfaces/elements';
 import { ShowTimeService } from 'src/app/services/show-time.service';
 import { TaskStatusService } from 'src/app/services/task-status.service';
 import { TaskTimeService } from 'src/app/services/taskTime';
@@ -26,6 +26,8 @@ export class CurrentWorkDayComponent implements OnInit {
     private userProgressBarComponent: UserProgressBarComponent,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
+  secondPageEmployeeList: ISecondPageEmployeeDetail[] = [];
+  check:boolean;
   startWork: EventEmitter<IUnitInfo> = new EventEmitter<IUnitInfo>();
   selectedId: number;
   id: number;
@@ -114,6 +116,7 @@ ngAfterViewInit(){
   },1000)
 }
   ngOnInit(): void {
+    
     const unitInfo = {
       color: EunitSectionColor.GRAY,
     } as IUnitInfo;
@@ -122,6 +125,21 @@ ngAfterViewInit(){
     this.service.getEmployeeById(this.selectedId).subscribe((x) => {
       this.employeeName$.push(of(x.name));
     });
+
+    // admin part
+    this.service.getAllEmployee().subscribe((x:IEmployeeDetail[]) => {
+      x.forEach((element) => {
+       of(element).subscribe((p) => {
+         this.service.getEmployeeStateById(p.id).subscribe((f:IEmployeeStateDetail) => {
+           this.secondPageEmployeeList.push({
+             datetime:f.date,
+             name:element.name,
+             check : f.employeeState == "work"? this.check = true : this.check = false
+           });
+         })
+       })
+      })
+})
   }
 
   public onOpenDialog() {
