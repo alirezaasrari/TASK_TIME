@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnChanges, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -121,6 +121,7 @@ export class CurrentWorkDayComponent implements OnInit {
       this.worktime++;
     }, 1000);
   }
+
   ngOnInit(): void {
     const unitInfo = {
       color: EunitSectionColor.GRAY,
